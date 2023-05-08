@@ -1,0 +1,2843 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Git and GitHub</title>
+
+    <meta name="description" content="Version control with Git and collaboration on GitHub">
+    <meta name="author" content="Ole Mussmann">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="reveal.js/4.3.1/reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="reveal.js/4.3.1/reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="reveal.js/4.3.1/reveal.js/dist/theme/black.css" id="theme">
+    <!-- fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Assistant">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal.js/4.3.1/reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
+
+    <!-- tweak colors and minor details -->
+    <link rel="stylesheet" href="reveal.js/custom_css/escience_4.3.1.css" id="theme">
+
+    <link rel="shortcut icon" type="image/png" href="./files/favicon-32x32.png"/>
+  </head>
+
+  <body onload="setTimeout(function(){addDecorations();}, 100);">
+    <div class="reveal">
+
+      <div id="hidden" style="display: none;">
+        <div id="decoration">
+          <div id="blue_pane_left" style="transition: opacity 1s; background-color: #009DDD; opacity: 0; position: absolute; left: 0; right: 50%; bottom: 0; top: 0; z-index: 2;"></div>
+          <div id="blue_pane_right" style="transition: opacity 1s; background-color: #009DDD; opacity: 0; position: absolute; left: 50%; right: 0; bottom: 0; top: 0; z-index: 2;"></div>
+          <div id="touch_pane" style="background-color: white; transition: opacity 1s; opacity: 0; position: absolute; left: 0; right: 66.6%; bottom: 0; top: 0; display: flex; align-items: center; justify-content: center; z-index: 2;">
+            <h1 style="color: black; text-align: left;">Let's stay<br>in touch</h1>
+          </div>
+          <div id="purple_half_circle_top" style="transition: top 1s; opacity: 1; position: absolute; background-color: #380339; left: 0; top: -17vw; width: 34vw; height: 17vw; border-radius: 0 0 20vw 20vw; z-index: 2;"></div>
+          <div id="yellow_half_strip" style="opacity: 1; transition: bottom 1s; position: absolute; background-color: #FFB213; right: 50%; bottom: -25vw; width: 17vw; height: 25vw; border-radius: 20vw 0 0 0; z-index: 2;"></div>
+          <div id="purple_strip_bottom" style="opacity: 1; transition: bottom 1s; position: absolute; background-color: #380339; right: calc(50% + 17vw); bottom: -10vw; width: 16vw; height: 10vw; border-radius: 20vw 20vw 0 0; z-index: 2;"></div>
+          <div id="logo_color" style="transition: opacity 1s, left 1s; opacity: 0; position: absolute; left: -12vw; top: 1.5vh; z-index: 2;">
+            <img style="width: 12vw;" src="./files/logo-fc.svg">
+          </div>
+          <div id="logo_part_white" style="transition: opacity 1s, left 1s; opacity: 0; position: absolute; left: -12vw; top: 1.5vh; z-index: 2;">
+            <img style="width: 12vw;" src="./files/logo-fc-part-white.svg">
+          </div>
+          <div id="logo_white" style="transition: opacity 1s, left 1s; opacity: 0; position: absolute; left: -12vw; top: 1.5vh; z-index: 2;">
+            <img style="width: 12vw;" src="./files/logo-fc-white.svg">
+          </div>
+          <div id="purple_overlay" style="background-color: #380339; opacity: 0; transition: opacity 1s; position: absolute; left: 0; right: 0; bottom: 0; top: 0; z-index: 1;">
+          </div>
+          <div id="blue_overlay" style="background-color: #009DDD; opacity: 0; transition: opacity 1s; position: absolute; left: 0; right: 0; bottom: 0; top: 0; z-index: 1;">
+          </div>
+          <div id="white_overlay" style="background-color: white; opacity: 0; transition: opacity 1s; position: absolute; left: 0; right: 0; bottom: 0; top: 0; z-index: 1;">
+          </div>
+          <div id="black_overlay" style="background-color: black; opacity: 0; transition: opacity 1s; position: absolute; left: 0; right: 0; bottom: 0; top: 0; z-index: 1;">
+          </div>
+          <div id="yellow_strip" style="background-color: #FFB213; transition: left 1s; width: 10vw; height: 70vh; border-radius: 10vw 10vw 0 0; z-index: 2; position: absolute; left: -10vw; bottom: 0;">
+          </div>
+          <div id="yellow_flag" style="background-color: #FFB213; transition: left 1s, bottom 1s; width: 10vh; height: 12vh; border-radius: 0 6vh 6vh 0; z-index: 3; position: absolute; left: -10vh; bottom: 5vh; margin: 0; padding: 0;">
+            <img id="left_e" src="./files/e-logo.svg" style="position: absolute; height: 10vh; margin: 1vh 0; padding: 0;"></img>
+          </div>
+          <div id="purple_half_circle_bottom" style="transition: bottom 1s; background-color: #380339; width: 20vw; height: 10vw; border-radius: 20vw 20vw 0 0; z-index: 2; position: absolute; left: 0; bottom: -10vw;">
+            <img id="left_e" src="./files/logo-fc-part-white.svg" style="position: absolute; bottom: 2vw; left: 6vw; width: 8vw;"></img>
+          </div>
+          <div id="purple_blob" style="transition: top 1s; position: absolute; display: flex; right: 0; top: -50vh; z-index: 2;">
+            <div style="background-color: #380339; width: 10vw; height: 25vh; border-radius: 0 0 10vw 10vw;">
+            </div>
+            <div style="background-color: #380339; width: 10vw; height: 50vh; border-radius: 0 0 10vw 10vw;">
+            </div>
+            <div class="box" style="background: #380339; position: absolute; right: 10vw; top: 0; width: 5vw; height: calc(25vh + 5vw); border-corner-shape: scoop; background: yellow; background: linear-gradient(45deg,  transparent 10vw, #380339 0) bottom left; background-image: radial-gradient(circle at 0 100%, rgba(204,0,0,0) 5vw, #380339 15px)">
+            </div>
+          </div>
+          <div id="blue_strip" style="background-color: #009DDD; transition: left 1s, right 1s; margin: 0; padding: 0; border-radius: 20vw 0 0 0; z-index: 2; position: absolute; right: -100vw; bottom: 0;">
+            <div id="footer" style="text-align: right; line-height: 130%; padding: 0; margin: 1vw 1vw 1vw 3vw; bottom: 0; right: 0;">
+            </div>
+          </div>
+          <img id="right_e" src="./files/letter-e.svg" style="transition: right 1s, top 1s; position: absolute; top: 10vh; right: -4vw; width: 4vw; z-index: 3;"></img>
+        </div>
+      </div>
+
+      <div class="slides">
+        <section data-markdown="00_title.md" data-separator=^\r?\n===\r?\n$ data-separator-vertical=^\r?\n---\r?\n$>
+<!--
+title: Git and GitHub
+description: Version control with Git and collaboration on GitHub
+author: Ole Mussmann
+version: 4.3.1
+plugins: RevealMarkdown, RevealHighlight, RevealMath.KaTeX, RevealMenu, RevealNotes, RevealSearch, RevealZoom
+-->
+
+<!-- .slide: data-state="blue_overlay yellow_flag yellow_strip purple_half_circle_bottom purple_blob right_e_top" data-background-video="./files/Mood video Homepage 2.mp4" data-background-video-loop data-background-video-muted="true" -->
+
+<img style="width: 10vw;" src="./files/TUSAIL_logo.svg">
+
+# Git
+## Collaboration with Git and GitHub
+
+[Barbara Vreede](mailto:b.vreede@esciencecenter.nl) | [Ole Mussmann](mailto:o.mussmann@esciencecenter.nl)
+
+===
+
+<!-- .slide: data-state="standard" data-background="./files/desk-593327_1920.jpg"-->
+## Table of Contents
+
+1. [Automated Version Control](#/automated_version_control)
+1. [Setting Up Git](#/setting_up_git)
+1. [Creating a Repository](#/creating_a_repository)
+1. [Tracking Changes](#/tracking_changes)
+1. [Exploring History](#/exploring_history)
+1. [Ignoring Things](#/ignoring_things)
+1. [Remotes in GitHub](#/remotes_in_github)
+1. [Collaborating](#/collaborating)
+1. [Conflicts](#/conflicts)
+
+</section>
+<section data-markdown="01_automated_version_control.md" data-separator=^\r?\n===\r?\n$ data-separator-vertical=^\r?\n---\r?\n$>
+<!-- .slide: id="automated_version_control" data-state="black_overlay logo yellow_flag" data-background="./files/book-wall-g2e1ec5a05_1920.jpg" -->
+<!-- Image by <a href="https://pixabay.com/users/kerttu-569708/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1151405">Kerttu</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1151405">Pixabay</a>-->
+# Automated Version Control
+
+What is version control and why should I use it?
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/book-wall-g2e1ec5a05_1920.jpg" -->
+<img style="height: 35vh;" src="https://swcarpentry.github.io/git-novice/fig/phd101212s.png"/>
+
+<span style="font-size: small;">“Piled Higher and Deeper” by Jorge Cham, http://www.phdcomics.com </span>
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/book-wall-g2e1ec5a05_1920.jpg" -->
+## Documents are...
+<div class="fragment">
+  a series of changes
+  <img style="height: 30vh; margin: 0; padding: 0;" src="https://swcarpentry.github.io/git-novice/fig/play-changes.svg"/>
+</div>
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/book-wall-g2e1ec5a05_1920.jpg" -->
+## Collaboration
+<div style="float: left; width: 49%;">
+  independent changes
+  <img style="height: 350px;" src="./files/versions.svg"/>
+</div>
+<div class="fragment" style="float: right; width: 49%;">
+  can be merged
+  <img style="height: 350px;" src="./files/merge.svg"/>
+</div>
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/book-wall-g2e1ec5a05_1920.jpg" -->
+## Quiz! 1/2
+
+<p>Imagine you drafted an excellent paragraph for a paper you are writing, but later ruin it. How would you retrieve the excellent version of your conclusion? Is it even possible?<p>
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/book-wall-g2e1ec5a05_1920.jpg" -->
+## Quiz! 2/2
+
+<p>Imagine you have 5 co-authors. How would you manage the changes and comments they make to your paper? If you use LibreOffice Writer or Microsoft Word, what happens if you accept changes made using the Track Changes option? Do you have a history of those changes?</p>
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/book-wall-g2e1ec5a05_1920.jpg" -->
+## Version Control: Key Points
+
+- Version control is like an unlimited **undo**.
+- Version control also allows many people to work in parallel.
+
+</section>
+<section data-markdown="02_setup.md" data-separator=^\r?\n===\r?\n$ data-separator-vertical=^\r?\n---\r?\n$>
+<!-- .slide: id="setting_up_git" data-state="blue_overlay logo yellow_flag" data-background="./files/hd-wallpaper-g72e534791_1920.jpg" -->
+<!-- Image by <a href="https://pixabay.com/users/yuri_b-2216431/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3292932">Yuri</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3292932">Pixabay</a> -->
+# Setting Up Git
+How do I set up Git?
+
+---
+
+## Do What I Say!
+<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/hd-wallpaper-g72e534791_1920.jpg" -->
+Git commands follow the grammar of
+
+<pre style="width: max-content;" data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash">
+&nbsp;git verb options&nbsp;
+</code></pre>
+
+---
+
+<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/hd-wallpaper-g72e534791_1920.jpg" -->
+## Configuration
+
+<pre style="height: 23vh;" data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="1-3|5-7|9-12|14-15|17-22|24-25">
+# A '$' sign is your empty command prompt
+# and _not_ part of the commands you are typing.
+$
+
+# Mandatory (for anything more than clone)
+$ git config --global user.name "Vlad Dracula"
+$ git config --global user.email "vlad@tran.sylvan.ia"
+
+# Recommended
+$ git config --global init.defaultBranch main
+$ git config --global core.autocrlf input   # if on MacOS/Linux [1]
+$ git config --global core.autocrlf true    # if on Windows [1]
+
+# Optional
+$ git config --global core.editor "code --wait"     # see [2] for options
+
+# If necessary
+$ git config --global http.proxy proxy-url  # set proxy
+$ git config --global https.proxy proxy-url # set proxy
+
+$ git config --global --unset http.proxy    # unset proxy
+$ git config --global --unset https.proxy   # unset proxy
+
+# List all set options
+$ git config --list --show-origin
+</code></pre>
+
+<footer>
+<span style="font-size: smaller;"><b>[1]</b> fixes line feeds, you don't have to fully understand this</span><br>
+<span style="font-size: smaller;"><b>[2]</b> <a href="https://git-scm.com/book/en/v2/Appendix-C:-Git-Commands-Setup-and-Config#ch_core_editor">git-scm.com/book/en/v2/Appendix-C:-Git-Commands-Setup-and-Config#ch_core_editor</a></span>
+</footer>
+
+---
+
+<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/hd-wallpaper-g72e534791_1920.jpg" -->
+## About VIM...
+<div class="r-stack">
+  <img class="fragment current-visible" src="https://preview.redd.it/m9eh2jw08qm61.jpg?width=583&format=pjpg&auto=webp&s=17994593b2b748b5087cc8ce786c7d161dd91747" height="300">
+  <img class="fragment current-visible" src="https://preview.redd.it/af7fmnv08qm61.jpg?width=564&format=pjpg&auto=webp&s=6c1704acf6f02a8cc3b3f644216fe1fcb9645e7c" height="500">
+  <img class="fragment fade-in" src="https://preview.redd.it/b5bt8nv08qm61.jpg?width=776&format=pjpg&auto=webp&s=0d592f97999f3f5d2cc4fd115fb5029831b53d2d" height="380">
+</div>
+
+<pre class="fragment" style="width: max-content;" data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash">
+[ESC] :wq [ENTER]  # Save and quit
+[ESC] :q! [ENTER]  # Quit without saving
+</code></pre>
+
+---
+
+<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/hd-wallpaper-g72e534791_1920.jpg" -->
+## Help!
+
+<pre style="width: max-content;" data-id="code-animation"><code style="overflow: hidden;" style="padding: .5em 1em;" data-trim class="bash">
+$ git help           # all git commands
+
+$ git config -h      # short help on config
+$ git config --help  # long help on config
+</code></pre>
+
+---
+
+<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/hd-wallpaper-g72e534791_1920.jpg" -->
+## Setup: Key Points
+Use git config with the **--global** option to configure a user name, email address, editor, and other preferences once per machine.
+
+
+</section>
+<section data-markdown="03_creating_a_repository.md" data-separator=^\r?\n===\r?\n$ data-separator-vertical=^\r?\n---\r?\n$>
+<!-- .slide: id="creating_a_repository" data-state="purple_overlay logo yellow_flag" data-background="./files/adan-creation-g5381c6989_1920.jpg" -->
+<!-- Image by <a href="https://pixabay.com/users/anassar-421921/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=436007">Andres Nassar</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=436007">Pixabay</a> -->
+# Creating a Repository
+Where does Git store information?
+
+---
+
+<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/adan-creation-g5381c6989_1920.jpg" -->
+## The Mission
+
+<blockquote>
+"Wolfman <span style="font-style: normal;">🐺</span> and Dracula <span style="font-style: normal;">🧛</span> investigate sending a planetary lander to Mars."
+</blockquote>
+
+<img style="height: 25vh;" src=https://swcarpentry.github.io/git-novice/fig/motivatingexample.png>
+
+<p style="font-size: small;">
+<a href="https://www.deviantart.com/b-maze/art/Werewolf-vs-Dracula-124893530">Werewolf vs dracula</a>
+by <a href="https://www.deviantart.com/b-maze">b-maze</a> / <a href="https://www.deviantart.com/">Deviant Art</a>.
+<a href="https://en.wikipedia.org/wiki/File:OSIRIS_Mars_true_color.jpg">Mars</a> by European Space Agency /
+<a href="https://creativecommons.org/licenses/by/3.0/deed.en">CC-BY-SA 3.0 IGO</a>.
+<a href="https://commons.wikimedia.org/wiki/File:PIA19873-Pluto-NewHorizons-FlyingPastImage-20150714-transparent.png">Pluto</a> /
+Courtesy NASA/JPL-Caltech.
+<a href="https://commons.wikimedia.org/wiki/File:Mummy_icon_-_Noun_Project_4070.svg">Mummy</a>
+© Gilad Fried / <a href="https://thenounproject.com/">The Noun Project</a> /
+<a href="https://creativecommons.org/licenses/by/3.0/deed.en">CC BY 3.0</a>.
+<a href="https://commons.wikimedia.org/wiki/File:Lune_ico.png">Moon</a>
+© Luc Viatour / <a href="https://lucnix.be/">https://lucnix.be</a> /
+<a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC BY-SA 3.0</a>.</p>
+
+---
+
+<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/adan-creation-g5381c6989_1920.jpg" -->
+## Create a Working Directory
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="1-4|6-7|9-10">
+# cd     change directory
+# ~      short for "home" directory
+# /      directory separator in Linux
+$ cd ~/Desktop 
+
+# mkdir  make directory
+$ mkdir planets
+
+# cd     change directory
+$ cd planets
+</code></pre>
+
+---
+
+<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/adan-creation-g5381c6989_1920.jpg" -->
+## Hello ~~World~~ Git
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="1|3-4|6-10">
+$ git init  # create empty git repository
+
+$ ls        # list directory contents
+# Nothing happens?!
+
+$ ls -a     # list _all_ directory content, including hidden
+.  ..  .git
+# .     is the current directory
+# ..    is the parent directory
+# .git  is a new folder named '.git'
+</code></pre>
+
+---
+
+<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/adan-creation-g5381c6989_1920.jpg" -->
+## Branches
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="1-2|4-9">
+$ git checkout -b main  # 'checkout -b' create branch
+Switched to a new branch 'main'
+
+$ git status
+On branch main
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+</code></pre>
+
+<footer>
+N.B.: git checkout -b [branch] ➡️ git switch [branch]<br>
+see <a href="https://www.infoq.com/news/2019/08/git-2-23-switch-restore/">infoq.com/news/2019/08/git-2-23-switch-restore</a>
+</footer>
+
+---
+
+<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/adan-creation-g5381c6989_1920.jpg" -->
+## Quiz!
+
+<blockquote style="text-align: left;">
+<span style="font-style: normal;">🧛</span> How about landing on moons instead?
+</blockquote>
+<blockquote style="text-align: right;">
+Well, I'm not sure if we should... <span style="font-style: normal;">🐺</span>
+</blockquote>
+<div class="fragment">
+... but Dracula already types
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="1-4|5-9">
+$ cd ~/Desktop   # return to Desktop directory
+$ cd planets     # go to planets directory (still a Git repository)
+$ ls -a          # ensure the .git subdirectory is still there
+.  ..  .git
+$ mkdir moons    # make a subdirectory planets/moons
+$ cd moons       # go into moons subdirectory
+$ git init       # make the moons subdirectory a Git repository
+$ ls -a          # confirm that we have created a new Git repository
+.  ..  .git
+</code></pre>
+</div>
+
+<p class="fragment">Is it necessary to create a repository in the moon directory to track files?</p>
+
+---
+
+<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/adan-creation-g5381c6989_1920.jpg" -->
+## Un-init?
+
+<blockquote style="text-align: right;">
+Look, nested repositories are not necessary. They might even interfere with each other. <span style="font-style: normal;">🐺</span>
+</blockquote>
+<blockquote style="text-align: left;">
+<span style="font-style: normal;">🧛</span> Oh, sorry. How can I remove it again?
+</blockquote>
+
+<div class="fragment">
+Wolfman takes over:
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="1-2|4-7">
+$ pwd  # print working directory
+/home/vlad/Desktop/moons
+&nbsp; 
+&#35; rm   # remove file or directory
+&#35; -r   # recursive (necessary for directories)
+&#35; -f   # force (.git resists accidental removal)
+$ rm -rf .git
+</code></pre>
+</div>
+
+<footer>
+<b>rm -rf</b>&nbsp; is destructive, make sure you are in the correct directory
+</footer>
+
+---
+
+<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/adan-creation-g5381c6989_1920.jpg" -->
+## Repository: Key Points
+
+- **git init** initializes a repository
+- Git stores all of its repository data in the **.git** directory
+
+</section>
+<section data-markdown="04_tracking_changes.md" data-separator=^\r?\n===\r?\n$ data-separator-vertical=^\r?\n---\r?\n$>
+<!-- .slide: id="tracking_changes" data-state="standard" data-background="./files/footprint-g55586a507_1920.jpg" -->
+<!-- Image by <a href="https://pixabay.com/users/tbit-715211/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=946189">Thomas Breher</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=946189">Pixabay</a> -->
+# Tracking Changes
+
+- How do I record changes in Git?
+- How do I check the status of my version control repository?
+- How do I record notes about what changes I made and why?
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/footprint-g55586a507_1920.jpg" -->
+## The Holy Realms of Git
+
+<ul>
+  <li><b>workspace</b>&nbsp;&nbsp;📂</li>
+  <ul>
+    <li>Your filesystem</li>
+  </ul>
+  <li class="fragment"><b>index</b>&nbsp;&nbsp;🕒
+    <ul>
+      <li>Staging area</li>
+      <li>Files wait patiently to be committed</li>
+    </ul>
+  </li>
+  <li class="fragment"><b>local repository</b>&nbsp;&nbsp;🗂️
+    <ul>
+      <li>Contains branches, commits, history, etc.</li>
+    </ul>
+  </li>
+<ul>
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/footprint-g55586a507_1920.jpg" -->
+## Create Files 🧛
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="1-5|7-8|10-11|13-24">
+$ cd ~/Desktop/planets  
+$ code mars.txt  # use your favorite editor here
+# type "Cold and dry, but everything is my favorite color"
+# [CTRL]+S  save file
+# [CTRL]+Q  exit editor
+
+$ ls             # list directory
+mars.txt
+
+$ cat mars.txt   # cat: print file content
+Cold and dry, but everything is my favorite color
+
+$ git status
+On branch main
+
+No commits yet
+
+Untracked files:
+   (use "git add &lt;file&gt;..." to include in what will be committed)
+
+	mars.txt
+
+nothing added to commit but untracked files present
+(use "git add" to track)
+</code></pre>
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/footprint-g55586a507_1920.jpg" -->
+## Add to Index 🧛
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="1-2|3-11">
+$ git add mars.txt  # add file to INDEX
+
+$ git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached &lt;file&gt;..." to unstage)
+
+	new file:   mars.txt
+</code></pre>
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/footprint-g55586a507_1920.jpg" -->
+## Commit to Local Repository 🧛
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="1-6|8-10|12-17">
+# -m  include a commit message,
+# if omitted an editor will open for you to enter one
+$ git commit -m "Start notes on Mars as a base"
+[main (root-commit) f22b25e] Start notes on Mars as a base
+ 1 file changed, 1 insertion(+)
+ create mode 100644 mars.txt
+
+$ git status
+On branch main
+nothing to commit, working directory clean
+
+$ git log
+commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
+Author: Vlad Dracula &lt;vlad@tran.sylvan.ia&gt;
+Date:   Thu Aug 22 09:51:46 2013 -0400
+
+    Start notes on Mars as a base
+</code></pre>
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/footprint-g55586a507_1920.jpg" -->
+## We All Have Our Differences 🧛
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="1-4|6-15|17-24|26-35|37-41">
+$ code mars.txt  # Add a line
+$ cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+
+$ git status
+On branch main
+Changes not staged for commit:
+  (use "git add &lt;file&gt;..." to update what will be committed)
+  (use "git checkout -- &lt;file&gt;..." to discard changes
+   in working directory)
+
+	modified:   mars.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ git diff
+diff --git a/mars.txt b/mars.txt  # output similar to `diff`
+index df0654a..315bf3a 100644     # diff between which versions?
+--- a/mars.txt                    # version a of 'mars.txt'
++++ b/mars.txt                    # version b of 'mars.txt'
+@@ -1 +1,2 @@                     # ±&lt;start line&gt;, &lt;number of lines&gt;
+ Cold and dry, but everything is my favorite color  # file context
++The two moons may be a problem for Wolfman         # +add -subtract
+
+$ git commit -m "Add concerns about effects of Mars’ moons on Wolfman"
+On branch main
+Changes not staged for commit:
+  (use "git add &lt;file&gt;..." to update what will be committed)
+  (use "git checkout -- &lt;file&gt;..." to discard changes
+   in working directory)
+
+	modified:   mars.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ git add mars.txt
+$ git commit -m "Add concerns about effects of Mars’ moons on Wolfman"
+[main 34961b1] Add concerns about effects of Mars’ moons on Wolfman
+ 1 file changed, 1 insertion(+)
+</code></pre>
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/footprint-g55586a507_1920.jpg" -->
+## Recap: Git Realms
+
+<img src="https://swcarpentry.github.io/git-novice/fig/git-staging-area.svg">
+
+- **workspace**
+  - your filesystem
+- **staging area / index**
+  - one or more files, waiting to be committed
+- **local repository**
+  - writing history
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/footprint-g55586a507_1920.jpg" -->
+## Getting the Hang of It 🧛
+
+<pre style="height: 457px;" data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="1-5|7-15|17-19|21-29|31-36|38-40|42-59">
+$ code mars.txt  # Add another line
+$ cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+
+$ git diff
+diff --git a/mars.txt b/mars.txt
+index 315bf3a..b36abfd 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1,2 +1,3 @@
+ Cold and dry, but everything is my favorite color
+ The two moons may be a problem for Wolfman
++But the Mummy will appreciate the lack of humidity
+
+$ git add mars.txt
+$ git diff
+# *crickets* 🦗🦗
+
+$ git diff --staged
+diff --git a/mars.txt b/mars.txt
+index 315bf3a..b36abfd 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1,2 +1,3 @@
+ Cold and dry, but everything is my favorite color
+ The two moons may be a problem for Wolfman
++But the Mummy will appreciate the lack of humidity
+
+$ git commit  # omit "-m message" and see what happens
+# type: Discuss appreciation about Mars’ climate for Mummy
+# also write a message for future you
+# save and exit the editor
+[main 005937f] Discuss appreciation about Mars’ climate for Mummy
+ 1 file changed, 1 insertion(+)
+
+$ git status
+On branch main
+nothing to commit, working directory clean
+
+$ git log
+commit 005937fbe2a98fb83f0ade869025dc2636b4dad5 (HEAD -&gt; main)
+Author: Vlad Dracula &lt;vlad@tran.sylvan.ia&gt;
+Date:   Thu Aug 22 10:14:07 2013 -0400
+
+    Discuss appreciation about Mars’ climate for Mummy
+
+commit 34961b159c27df3b475cfe4415d94a6d1fcd064d
+Author: Vlad Dracula &lt;vlad@tran.sylvan.ia&gt;
+Date:   Thu Aug 22 10:07:21 2013 -0400
+
+    Add concerns about effects of Mars’ moons on Wolfman
+
+commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
+Author: Vlad Dracula &lt;vlad@tran.sylvan.ia&gt;
+Date:   Thu Aug 22 09:51:46 2013 -0400
+
+    Start notes on Mars as a base
+</code></pre>
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/footprint-g55586a507_1920.jpg" -->
+
+## Tips: Pager
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers>
+$ git log
+commit 005937fbe2a98fb83f0ade869025dc2636b4dad5 (HEAD -&gt; main)
+Author: Vlad Dracula &lt;vlad@tran.sylvan.ia&gt;
+Date:   Thu Aug 22 10:14:07 2013 -0400
+
+    Discuss appreciation about Mars’ climate for Mummy
+
+commit 34961b159c27df3b475cfe4415d94a6d1fcd064d
+Author: Vlad Dracula &lt;vlad@tran.sylvan.ia&gt;
+:  # When the screen can't fit the whole log, the output is _paged_
+</code></pre>
+
+
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers>
+# Navigate the content with:
+Q             # exit pager
+SPACEBAR      # next page
+↑↓            # up or down
+/word[ENTER]  # search for word
+N             # find the next match
+</code></pre>
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/footprint-g55586a507_1920.jpg" -->
+## Tips: Word-Based Diffing
+
+<pre style="width: max-content;" data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash">
+&nbsp;$ git diff --color-words&nbsp;
+</code></pre>
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/footprint-g55586a507_1920.jpg" -->
+
+## Tips: Formatting Logs
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="1-6|8-12|14-18">
+$ git log -1
+commit 005937fbe2a98fb83f0ade869025dc2636b4dad5 (HEAD -&gt; main)
+Author: Vlad Dracula &lt;vlad@tran.sylvan.ia&gt;
+Date:   Thu Aug 22 10:14:07 2013 -0400
+
+   Discuss concerns about Mars’ climate for Mummy
+
+$ git log --oneline
+
+005937f (HEAD -&gt; main) Discuss appreciation about Mars’ climate for Mummy
+34961b1 Add concerns about effects of Mars’ moons on Wolfman
+f22b25e Start notes on Mars as a base
+
+$ git log --oneline --graph
+
+* 005937f (HEAD -&gt; main) Discuss appreciation about Mars’ climate for Mummy
+* 34961b1 Add concerns about effects of Mars’ moons on Wolfman
+* f22b25e Start notes on Mars as a base
+</code></pre>
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/footprint-g55586a507_1920.jpg" -->
+
+## Directories 🧛
+
+<pre style="height: 330px;" data-id="code-animation"><code style="height: 330px; overflow: hidden;" data-trim class="bash" data-line-numbers="1-11|13-21|23-31">
+$ mkdir spaceships
+$ git status
+On branch main
+nothing to commit, working tree clean
+# ?
+
+$ git add spaceships
+$ git status
+On branch main
+nothing to commit, working tree clean
+# ??
+
+# touch  create an empty file
+$ touch spaceships/apollo-11 spaceships/sputnik-1
+$ git status
+On branch main
+Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)
+	spaceships/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+$ git add spaceships
+$ git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged &lt;file&gt;..." to unstage)
+	new file:   spaceships/apollo-11
+	new file:   spaceships/sputnik-1
+
+$ git commit -m "Add some initial thoughts on spaceships"
+</code></pre>
+
+<blockquote class="fragment" data-fragment-index="1" style="text-align: left;">
+<span style="font-style: normal;">🧛</span> WTF?
+</blockquote>
+<blockquote class="fragment" data-fragment-index="2" style="text-align: right;">
+Git does not track empty directories <span style="font-style: normal;">🐺</span>
+</blockquote>
+
+<footer>
+use an empty hidden file if you want to commit an "empty" folder
+</footer>
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/footprint-g55586a507_1920.jpg" -->
+## Crowded Staging Area / Index
+
+<img src="https://swcarpentry.github.io/git-novice/fig/git-committing.svg">
+
+The Staging Area / Index can hold many files and folders.
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/footprint-g55586a507_1920.jpg" -->
+## Quiz 1/2
+
+<blockquote style="text-align: left;">
+<span style="font-style: normal;">🧛</span> Which commit message should I choose?
+<ol>
+  <li>“Changes”</li>
+  <li>“Added line ‘But the Mummy will appreciate the lack of humidity’ to mars.txt”</li>
+  <li>“Discuss effects of Mars’ climate on the Mummy”</li>
+</ol>
+</code></pre>
+</blockquote>
+<blockquote class="fragment" style="text-align: right;">
+Make it short, descriptive, and imperative <span style="font-style: normal;">🐺</span>
+</blockquote>
+<blockquote class="fragment" style="text-align: right;">
+So yeah, the last one is good! <span style="font-style: normal;">🐺</span>
+</blockquote>
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/footprint-g55586a507_1920.jpg" -->
+## Quiz 2/2
+
+<blockquote style="text-align: left;">
+<span style="font-style: normal;">🧛</span> Which command saves <b>myfile.txt</b> to my Git repo?<br>
+<ol>
+  <li>
+    <pre style="width: 100%; font-style: normal;" data-id="code-animation"><code data-trim class="bash">
+    $ git commit -m "my recent changes"
+    </code></pre>
+  </li>
+  <li>
+    <pre style="width: 100%; font-style: normal;" data-id="code-animation"><code data-trim class="bash">
+    $ git init myfile.txt
+    $ git commit -m "my recent changes"
+    </code></pre>
+  </li>
+  <li>
+    <pre style="width: 100%; font-style: normal;" data-id="code-animation"><code data-trim class="bash">
+    $ git add myfile.txt
+    $ git commit -m "my recent changes"
+    </code></pre>
+  </li>
+  <li>
+    <pre style="width: 100%; font-style: normal;" data-id="code-animation"><code data-trim class="bash">
+    $ git commit -m myfile.txt "my recent changes"
+    </code></pre>
+  </li>
+</ol>
+</code></pre>
+</blockquote>
+<blockquote class="fragment" style="text-align: right;">
+3. adds your file to the index, and then commits it. That's the one.
+<span style="font-style: normal;">🐺</span>
+</blockquote>
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/footprint-g55586a507_1920.jpg" -->
+## Exercise 1/2
+
+<ol style="font-size: x-large;">
+  <li>Edit <b>mars.txt</b> noting your decision to consider Venus as a base</li>
+  <li>Create a file <b>venus.txt</b> with your thoughts about Venus as a base for you and your friends</li>
+  <li>Add changes from both files to the staging area, and commit those changes</li>
+</ol>
+
+<pre class="fragment" style="width: 100%; font-style: normal;" data-id="code-animation"><code data-trim class="bash" data-line-numbers="1-4|6-9|11-15|17-22">
+$ code mars.txt
+$ cat mars.txt
+
+Maybe I should start with a base on Venus.
+
+$ code venus.txt
+$ cat venus.txt
+
+Venus is a nice planet and I definitely should consider it as a base.
+
+$ git add mars.txt venus.txt
+
+# Or with multiple commands:
+# git add mars.txt
+# git add venus.txt
+
+$ git commit -m "Write plans to start a base on Venus"
+
+[main cc127c2]
+ Write plans to start a base on Venus
+ 2 files changed, 2 insertions(+)
+ create mode 100644 venus.txt
+</code></pre>
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/footprint-g55586a507_1920.jpg" -->
+## Exercise 2/2
+
+<ol style="font-size: x-large;">
+  <li>Create a new Git repository on your computer in a directory called <b>bio</b>.</li>
+  <li>Write a three-line biography for yourself in a file called <b>me.txt</b>, commit your changes</li>
+  <li>Modify one line, add a fourth line</li>
+  <li>Display the differences between its updated state and its original state</li>
+</ol>
+
+<pre class="fragment" style="width: 100%; font-style: normal;" data-id="code-animation"><code data-trim class="bash" data-line-numbers="1-4|6|8-12|14-22|24-34">
+$ cd ..  # if needed
+
+$ mkdir bio
+$ cd bio
+
+$ git init
+
+$ code me.txt
+$ cat me.txt
+In the beginning there was light.
+Then I closed my eyes for a brief second.
+And now I’m in my forties...
+
+$ git add me.txt
+$ git commit -m "Add biography file" 
+
+$ code me.txt
+$ cat me.txt
+In the beginning there was light.
+Then I lived a wonderful life.
+And now I’m in my forties...
+Teaching Git! :D
+
+$ git diff me.txt
+diff --git a/me.txt b/me.txt
+index 4660238..d9450bd 100644
+--- a/me.txt
++++ b/me.txt
+@@ -1,3 +1,4 @@
+ In the beginning there was light.
+-Then I closed my eyes for a brief second.
++Then I lived a wonderful life.
+ And now I’m in my forties...
++Teaching Git! :D
+</code></pre>
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/footprint-g55586a507_1920.jpg" -->
+## Tracking Changes: Key Points
+
+- Files can be stored in
+  - **working directory**: the files you can see
+  - **staging area / index**: files about to be committed
+  - **local repository**: the permanent record
+- **git status**&nbsp; shows the status of a repository
+- **git add**&nbsp; puts files in the staging area
+- **git commit**&nbsp; saves the staged content as a new commit in the local repository
+- Write short, descriptive, and imperative commit messages
+
+</section>
+<section data-markdown="05_exploring_history.md" data-separator=^\r?\n===\r?\n$ data-separator-vertical=^\r?\n---\r?\n$>
+<!-- .slide: id="exploring_history" data-state="black_overlay logo yellow_flag" data-background="./files/lamp-g95a0e35a2_1920.jpg" -->
+<!-- Image by <a href="https://pixabay.com/users/laura_o-25271417/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=6997864">Laura Otýpková</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=6997864">Pixabay</a> -->
+# Exploring History
+
+- How can I identify old versions of files?
+- How do I review my changes?
+- How can I recover old versions of files?
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/lamp-g95a0e35a2_1920.jpg" -->
+## Looking Back in Time 🧛
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="1-6|8-18|20-30|32-42|44-58| 60-70|72-82">
+$ code mars.txt  # Don't commit yet!
+$ cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+An ill-considered change
+
+# diff to the previous commit
+$ git diff HEAD mars.txt
+diff --git a/mars.txt b/mars.txt
+index b36abfd..93a3e13 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1,3 +1,4 @@
+ Cold and dry, but everything is my favorite color
+ The two moons may be a problem for Wolfman
+ But the Mummy will appreciate the lack of humidity
++An ill-considered change
+
+# diff to the commit _before that_
+$ git diff HEAD~1 mars.txt
+diff --git a/mars.txt b/mars.txt
+index 315bf3a..93a3e13 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1,2 +1,4 @@
+ Cold and dry, but everything is my favorite color
+ The two moons may be a problem for Wolfman
++But the Mummy will appreciate the lack of humidity
++An ill-considered change
+
+# diff to _any_ previous commit
+$ git diff HEAD~2 mars.txt
+diff --git a/mars.txt b/mars.txt
+index df0654a..93a3e13 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1 +1,4 @@
+ Cold and dry, but everything is my favorite color
++The two moons may be a problem for Wolfman
++But the Mummy will appreciate the lack of humidity
++An ill-considered change
+
+# show _any_ previous commit
+$ git show HEAD~2 mars.txt
+commit 825524b73bd00643261494eab739a16af9af75cd
+Author: Vlad Dracula &lt;vlad@tran.sylvan.ia&gt;
+Date:   Thu Nov 24 10:02:46 2022 +0100
+
+    Start notes on Mars as a base
+
+diff --git a/mars.txt b/mars.txt
+new file mode 100644
+index 0000000..df0654a
+--- /dev/null
++++ b/mars.txt
+@@ -0,0 +1 @@
++Cold and dry, but everything is my favorite color
+
+# diff to a specific commit hash
+$ git diff 825524b73bd00643261494eab739a16af9af75cd mars.txt
+diff --git a/mars.txt b/mars.txt
+index df0654a..93a3e13 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1 +1,4 @@
+ Cold and dry, but everything is my favorite color
++The two moons may be a problem for Wolfman
++But the Mummy will appreciate the lack of humidity
++An ill-considered change
+
+# diff to a specific commit hash, but lazy
+$ git diff 825524b mars.txt
+diff --git a/mars.txt b/mars.txt
+index df0654a..93a3e13 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1 +1,4 @@
+ Cold and dry, but everything is my favorite color
++The two moons may be a problem for Wolfman
++But the Mummy will appreciate the lack of humidity
++An ill-considered change
+</code></pre>
+
+<ul class="fragment" data-fragment-index="1">
+  <li><b>HEAD</b> identifies the most recent commit</li>
+  <li><b>HEAD~1</b> identifies the commit before that</li>
+  <li><b>HEAD~X</b> identifies the commit X steps back</li>
+</ul>
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/lamp-g95a0e35a2_1920.jpg" -->
+## Time Travel 🧛
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="1-11|13-17|19-21|23-28|30-31|33-36">
+$ git status
+
+On branch main
+Changes not staged for commit:
+  (use "git add &lt;file&gt;..." to update what will be committed)
+  (use "git checkout -- &lt;file&gt;..." to discard changes
+   in working directory)
+
+    modified:   mars.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ git checkout HEAD mars.txt
+$ cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+
+$ git checkout 825524b mars.txt
+$ cat mars.txt
+Cold and dry, but everything is my favorite color
+
+$ git status
+On branch main
+Changes to be committed:
+  (use "git reset HEAD &lt;file&gt;..." to unstage)
+
+    modified:   mars.txt
+
+$ git checkout HEAD mars.txt
+Updated 1 path from 6573bcb
+
+$ cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+</code></pre>
+
+<blockquote class="fragment" data-fragment-index="1" style="text-align: left;">
+<span style="font-style: normal;">🧛</span> My last change was ill-considered. <span style="font-style: normal;">😕</span> How can I roll it back?
+</blockquote>
+<blockquote class="fragment" data-fragment-index="2" style="text-align: right;">
+"checkout" what you did before. <span style="font-style: normal;">🐺</span>
+</blockquote>
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/lamp-g95a0e35a2_1920.jpg" -->
+## Git Workflow
+
+<img src="https://swcarpentry.github.io/git-novice/fig/git_staging.svg">
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/lamp-g95a0e35a2_1920.jpg" data-auto-animate -->
+## Dracula Makes a Typo 🧛
+
+<blockquote style="text-align: left;">
+<span style="font-style: normal;">🧛</span> Let's check out <b>mars.txt</b> from this previous commit.
+</blockquote>
+
+<pre style="font-size: x-large;" data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="1|2-13">
+$ git checkout 825524b  # Uh oh. Dracula forgot `mars.txt`.
+Ɲote: switching to '825524b'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command. Example:
+
+  git checkout -b &lt;new-branch-name&gt;
+
+HEAD is now at 825524b Start notes on Mars as a base
+</code></pre>
+
+<blockquote class="fragment" style="text-align: left;">
+<span style="font-style: normal;">🧛 😱</span>
+</blockquote>
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/lamp-g95a0e35a2_1920.jpg" data-auto-animate -->
+
+## Detached HEAD 🤕
+
+<pre data-id="code-animation-1"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="1">
+$: git checkout --detach 825524b  # notice the mandatory --detach flag
+&nbsp;
+&nbsp;
+&nbsp;
+</code></pre>
+
+<pre data-id="code-animation-2"><code data-trim class="bash">
+        "825524b"
+            |
+main (m1)--(m2)--(m3)
+            |
+           HEAD (detached)  # sounds worse than it is
+&nbsp;
+&nbsp;
+</code></pre>
+
+- Usually HEAD is a pointer to the tip of a branch
+- But when checking out commit hashes or tags,<br>the HEAD is "detached" 
+
+<div>
+<br>
+<br>
+</div>
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/lamp-g95a0e35a2_1920.jpg" data-auto-animate -->
+
+## Detached HEAD 🤕
+
+<pre data-id="code-animation-1"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="2">
+$: git checkout --detach 825524b  # notice the mandatory --detach flag
+$: edit files; git add .; git commit -m "edited stuff";
+&nbsp;
+&nbsp;
+</code></pre>
+
+<pre data-id="code-animation-2"><code data-trim class="bash">
+        "825524b"
+            |
+main (m1)--(m2)--(m3)
+             \
+             (x1)  # ephemeral, "virtual" branch
+              |
+             HEAD (detached)
+</code></pre>
+
+- Usually HEAD is a pointer to the tip of a branch
+- But when checking out commit hashes or tags,<br>the HEAD is "detached" 
+- Edits that you make now would be lost
+
+<div>
+<br>
+</div>
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/lamp-g95a0e35a2_1920.jpg" data-auto-animate -->
+
+## Detached HEAD 🤕
+
+<pre data-id="code-animation-1"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="3">
+$: git checkout --detach 825524b  # notice the mandatory --detach flag
+$: edit files; git add .; git commit -m "edited stuff";
+$: edit more; git add .; git commit -m "edited more";
+&nbsp;
+</code></pre>
+
+<pre data-id="code-animation-2"><code data-trim class="bash">
+        "825524b"
+            |
+main (m1)--(m2)--(m3)
+             \
+             (x1)--(x2)  # ephemeral, "virtual" branch
+                    |
+                   HEAD (detached)
+</code></pre>
+
+- Usually HEAD is a pointer to the tip of a branch
+- But when checking out commit hashes or tags,<br>the HEAD is "detached" 
+- Edits that you make now would be lost
+
+<div>
+<br>
+</div>
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/lamp-g95a0e35a2_1920.jpg" data-auto-animate -->
+
+## Detached HEAD 🤕
+
+<pre data-id="code-animation-1"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="4">
+$: git checkout --detach 825524b  # notice the mandatory --detach flag
+$: edit files; git add .; git commit -m "edited stuff";
+$: edit more; git add .; git commit -m "edited more";
+$: git checkout -b "new_branch"
+</code></pre>
+
+<pre data-id="code-animation-2"><code data-trim class="bash">
+        "825524b"
+            |
+main (m1)--(m2)--(m3)
+             \
+new_branch   (n1)--(n2)  # proper branch, will go down in history
+                    |
+                   HEAD
+</code></pre>
+
+- Usually HEAD is a pointer to the tip of a branch
+- But when checking out commit hashes or tags,<br>the HEAD is "detached" 
+- Edits that you make now would be lost
+- Creating a new branch re-attaches HEAD
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/lamp-g95a0e35a2_1920.jpg" -->
+## Let Git Help You 💝
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="1-9|11-16|18-26|28-31">
+$ code mars.txt
+$ git status
+On branch main
+Changes not staged for commit:
+  (use "git add &lt;file&gt;..." to update what will be committed)
+  (use "git restore &lt;file&gt;..." to discard changes in working directory)
+	modified:   mars.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ git add mars.txt
+$ git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged &lt;file&gt;..." to unstage)
+	modified:   mars.txt
+
+$ git restore --staged mars.txt
+$ git status
+On branch main
+Changes not staged for commit:
+  (use "git add &lt;file&gt;..." to update what will be committed)
+  (use "git restore &lt;file&gt;..." to discard changes in working directory)
+	modified:   mars.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ git restore mars.txt 
+$ git status          
+On branch main
+nothing to commit, working tree clean
+</code></pre>
+
+Git gives you helpful suggestions on how to proceed<br>or how to undo.
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/lamp-g95a0e35a2_1920.jpg" -->
+## Quiz 1/3
+
+<blockquote style="text-align: left;">
+<span style="font-style: normal;">🧛</span> I deleted a line in mars.txt! How can I go back to the last committed version?<br>
+<pre style="width: 100%;"><code style="overflow: hidden; font-style: normal;" data-trim class="bash" data-line-numbers>
+  $ git checkout HEAD
+  $ git checkout HEAD mars.txt
+  $ git checkout HEAD~1 mars.txt
+  $ git checkout &lt;ID of last commit&gt; mars.txt
+</code></pre>
+</blockquote>
+
+<blockquote class="fragment" style="text-align: right;">
+<ol>
+  <li>restores <b>all</b> files, erasing <b>all</b> changes, and detaches HEAD ⚠️</li>
+  <li>reverts only mars.txt by one commit</li>
+  <li>reverts mars.txt to an earlier version ⚠️</li>
+  <li>is equivalent to 2.</li>
+</ol><span style="font-style: normal;">🐺</span>
+</blockquote>
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/lamp-g95a0e35a2_1920.jpg" data-auto-animate -->
+## Quiz 2/3
+
+<blockquote data-id="vlad1" style="text-align: left;">
+<span style="font-style: normal;">🧛</span> I committed a file with an error! How can I revert a commit?<br>
+</blockquote>
+<blockquote style="text-align: right; font-style: normal;">
+<pre data-id="code-animation" style="width: 100%;"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers>
+# Find the commit ID where you want to revert to.
+$ ???
+# Copy the first 7 characters of that ID, e.g. 825524b
+$ git revert [commit ID]
+# Type commit message
+# Save and close editor
+</code></pre>
+<span data-id="wolf1" style="font-style: normal;">🐺</span>
+</blockquote>
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/lamp-g95a0e35a2_1920.jpg" data-auto-animate -->
+## Quiz 2/3
+
+<blockquote data-id="vlad1" style="text-align: left;">
+<span style="font-style: normal;">🧛</span> I committed a file with an error! How can I revert a commit?<br>
+</blockquote>
+<blockquote style="text-align: right; font-style: normal;">
+<pre data-id="code-animation" style="width: 100%;"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers>
+# Find the commit ID where you want to revert to.
+$ git log
+# Copy the first 7 characters of that ID, e.g. 825524b
+$ git revert [commit ID]
+# Type commit message
+# Save and close editor
+</code></pre>
+<span data-id="wolf1" style="font-style: normal;">🐺</span>
+</blockquote>
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/lamp-g95a0e35a2_1920.jpg" data-auto-animate -->
+## Quiz 2/3
+
+<blockquote data-id="vlad1" style="text-align: left;">
+<span style="font-style: normal;">🧛</span> I committed a file with an error! How can I revert a commit?<br>
+</blockquote>
+<blockquote style="text-align: right; font-style: normal;">
+<pre data-id="code-animation" style="width: 100%;"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers>
+# Find the commit ID where you want to revert to.
+$ git show HEAD
+# Copy the first 7 characters of that ID, e.g. 825524b
+$ git revert [commit ID]
+# Type commit message
+# Save and close editor
+</code></pre>
+<span data-id="wolf1" style="font-style: normal;">🐺</span>
+</blockquote>
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/lamp-g95a0e35a2_1920.jpg" -->
+## Quiz 3/3
+
+<blockquote style="text-align: left;">
+<span style="font-style: normal;">🧛</span> What would happen if I do...<br>
+<pre data-id="code-animation" style="width: 100%; font-style: normal;"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers>
+$ cd planets
+$ echo "Venus is beautiful" > venus.txt
+$ git add venus.txt
+$ echo "Venus is too hot for a base" >> venus.txt
+$ git commit -m "Comment on Venus as a base"
+$ git checkout HEAD venus.txt
+$ cat venus.txt
+</code></pre>
+</blockquote>
+
+<blockquote class="fragment" style="text-align: right; font-style: normal;">
+<pre data-id="code-animation" style="width: 100%; font-style: normal;"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers>
+# Change into directory 'planets'
+# Add "Venus is beatiful" to venus.txt
+# Add venus.txt to staging area / index
+# Append "Venus is too hot for a base" to venus.txt
+# Commit the _previously staged_ venus.txt
+# Revert local changes of venus.txt, and finally print
+Venus is beautiful and full of love
+</code></pre>
+</code></pre>
+<span data-id="wolf1" style="font-style: normal;">🐺</span>
+</blockquote>
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/lamp-g95a0e35a2_1920.jpg" -->
+## Quiz 4/4
+### Diff, What If... 🤔
+
+<pre data-id="code-animation" style="width: max-content;"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers>
+$ git diff HEAD~100 mars.txt
+$ git diff [ID] mars.txt  # ID of most recent commit
+</code></pre>
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/lamp-g95a0e35a2_1920.jpg" -->
+## Exercise 1/2
+**git checkout** can be used to restore a previous commit when unstaged changes have been made, but will it also work for changes that have been staged but not committed?
+
+Make a change to **mars.txt**, add that change, and use **git&nbsp;checkout** to see if you can remove your change.
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/lamp-g95a0e35a2_1920.jpg" -->
+## Exercise 2/2
+Exploring history is an important part of Git. How can you find a commit ID from waaaaay back?
+
+<ol>
+  <li>Find a previous <b>commit message</b>
+    <ul>
+    <li><pre data-id="code-animation" style="padding: 0; margin: 0;"><code style="overflow: hidden;" data-trim class="bash">
+    $ git log mars.txt 
+    </code></pre></li>
+    <li>Search the list</li>
+    </ul>
+  </li>
+  <li>Find a previous <b>change in file content</b> with
+    <ul>
+    <li><pre data-id="code-animation" style="padding: 0; margin: 0;"><code style="overflow: hidden;" data-trim class="bash">
+    $ git log --patch mars.txt 
+    </code></pre></li>
+    <li>Search the list</li>
+    </ul>
+  </li>
+</ol>
+
+---
+
+<!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/lamp-g95a0e35a2_1920.jpg" -->
+## Tracking Changes: Key Points
+
+- **git diff** displays differences between commits
+- **git checkout** recovers old versions of files
+
+</section>
+<section data-markdown="06_ignoring_things.md" data-separator=^\r?\n===\r?\n$ data-separator-vertical=^\r?\n---\r?\n$>
+<!-- .slide: id="ignoring_things" data-state="blue_overlay logo yellow_flag" data-background="./files/boy-g17e8683be_1920.jpg" -->
+# Ignoring Things
+
+- How can I tell Git to ignore files I don’t want to track?
+
+---
+
+<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/boy-g17e8683be_1920.jpg" -->
+## A New Beginning
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers>
+$ cd ..          # exit the 'planets' directory
+$ mkdir project  # create a new directory 'project'
+$ cd project     # change into directory 'project'
+$ git init       # create a new git repository
+</code></pre>
+
+---
+
+<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/boy-g17e8683be_1920.jpg" -->
+## .gitignore 🙈
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="1-2|4-17|19-22|24-32|34-38|40-46|48-58">
+$ mkdir results
+$ touch a.dat b.dat c.dat results/a.out results/b.out
+
+$ git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)
+	a.dat
+	b.dat
+	c.dat
+	results/
+
+nothing added to commit but untracked files present (use "git add"
+to track)
+
+$ code .gitignore
+$ cat .gitignore
+*.dat
+results/  # Note the slash, this means it's a directory!
+
+$ git status
+On branch main
+Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)
+
+	.gitignore
+
+nothing added to commit but untracked files present (use "git add"
+to track)
+
+$ git add .gitignore
+$ git commit -m "Ignore data files and the results folder."
+$ git status
+On branch main
+nothing to commit, working directory clean
+
+$ git add a.dat
+The following paths are ignored by one of your .gitignore files:
+a.dat
+hint: Use -f if you really want to add them.
+hint: Turn this message off by running
+hint: "git config advice.addIgnoredFile false"
+# Thank you, Git! 🙏
+
+$ git status --ignored
+On branch main
+Ignored files:
+ (use "git add -f &lt;file&gt;..." to include in what will be committed)
+
+        a.dat
+        b.dat
+        c.dat
+        results/
+
+nothing to commit, working directory clean
+</code></pre>
+
+---
+
+<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/boy-g17e8683be_1920.jpg" -->
+## Quiz: Ignoring Nested Directories 
+
+Imagine having the following directory structure:
+<pre data-id="code-animation" style="width: max-content;"><code style="overflow: hidden;" data-trim class="bash">
+&nbsp;results/data
+&nbsp;results/plots 
+</code></pre>
+
+How can you ignore only one sub-directory?
+
+<pre class="fragment" style="width: max-content;" data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers>
+$ cat .gitignore 
+results/plots/
+</code></pre>
+
+---
+
+<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/boy-g17e8683be_1920.jpg" -->
+## .gitignore Syntax 
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers>
+file.txt              # the file "file.txt"
+directory/            # the directory "directory" and content
+*.log                 # all files ending with ".log"
+error_?.log           # "error_1.log", "error_A.log", ...
+error_[a-z].log       # "error_a.log", "error_b.log", ...
+!error_important.log  # do _not_ ignore "error_important.log"
+**/secret             # _all_ "secret" folders and content, everywhere
+/home/ole/**/secret   # as above, but only within /home/ole/
+</code></pre>
+
+---
+
+<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/boy-g17e8683be_1920.jpg" -->
+## Quiz: Perfecting Ignoring 1/2
+
+<ul>
+  <li>How to ignore all <b>.dat</b> files, except <b>final.dat</b>?
+<pre class="fragment" data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers>
+*.dat           # ignore all data files
+!final.dat      # except final.data
+</code></pre>
+  </li>
+
+  <li class="fragment">How to ignore everything in <b>results/</b>, except <b>results/data</b>?
+<pre class="fragment" data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers>
+results/*               # ignore everything in results folder
+!results/data/          # do not ignore results/data/ contents
+</code></pre>
+  </li>
+</ul>
+
+---
+
+<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/boy-g17e8683be_1920.jpg" -->
+## Quiz: Perfecting Ignoring 2/2
+
+<ul>
+  <li class="fragment">What's the shortest <b>.gitignore</b> to exclude all <b>.dat</b> files in <b>result/data/position/gps</b>? Do not ignore the <b>info.txt</b>.
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash">
+results/data/position/gps/a.dat
+results/data/position/gps/b.dat
+results/data/position/gps/info.txt
+results/plots
+</code></pre>
+
+<pre class="fragment" data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers>
+results/data/position/gps/*.dat
+</code></pre>
+  </li>
+  <li class="fragment">You have many scattered <b>.dat</b> files. How can you ignore all of them?
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash">
+results/a.dat
+data/experiment_1/a.dat
+data/experiment_2/b.dat
+data/experiment_2/variation_1/d.dat
+# [and many more...]
+</code></pre>
+
+<pre class="fragment" data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers>
+**/*.dat
+</code></pre>
+  </li>
+</ul>
+
+---
+
+<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/boy-g17e8683be_1920.jpg" -->
+## Contradictions
+
+What does the following **.gitignore** file achieve?
+<pre data-id="code-animation" style="width: max-content;"><code style="overflow: hidden;" data-trim class="bash">
+&nbsp;*.dat
+&nbsp;!*.dat 
+</code></pre>
+
+<span class="fragment">Nothing. Lines always overrule previous lines.</span>
+
+---
+
+<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/boy-g17e8683be_1920.jpg" -->
+## Hands-On
+
+<div style="font-size: smaller;">
+You generated many log files of the form <b>log_01</b>, <b>log_02</b>, ... You want to keep them, but not track them with Git.<br>
+<ol>
+  <li>Write <b>one .gitignore</b> to exclude them.</li>
+  <li>Test your "ignore pattern" by creating dummy files of the form <b>log_01</b>, <b>log_02</b>, ...
+<pre class="fragment" data-id="code-animation" style="width: max-content;"><code style="overflow: hidden;" data-trim class="bash">
+&nbsp;log_* 
+</code></pre>
+  </li>
+  <li class="fragment">You find that <b>log_01</b> is very important after all! Add it to the tracked files without changing your <b>.gitignore</b><br>
+<pre class="fragment" data-id="code-animation" style="width: max-content;"><code style="overflow: hidden;" data-trim class="bash">
+$ git add -f log_01 
+</code></pre>
+  </li>
+  <li class="fragment">Discuss with your neighbor what other types of files could reside in your directory that you do not want to track and thus would exclude via <b>.gitignore</b></li>
+</ol>
+</div>
+
+---
+
+<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/boy-g17e8683be_1920.jpg" -->
+## Tracking Changes: Key Points
+
+- The **.gitignore** file tells Git which files and folders _not_ to track
+
+</section>
+<section data-markdown="07_remotes.md" data-separator=^\r?\n===\r?\n$ data-separator-vertical=^\r?\n---\r?\n$>
+<!-- .slide: id="remotes_in_github" data-state="purple_overlay logo yellow_flag" data-background="./files/port-g38ab8a46f_1920.jpg" -->
+<!-- Image by <a href="https://pixabay.com/users/pexels-2286921/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1845350">Pexels</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1845350">Pixabay</a> -->
+# Remotes in GitHub
+
+- How do I share my changes with others on the web?
+
+---
+
+<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/port-g38ab8a46f_1920.jpg" -->
+## HEAD in the Cloud ☁️
+
+To _really_ collaborate with others, we need a shared repository. Let's create one on [github.com](https://github.com).
+
+<ul>
+  <li>Log in if you aren't already</li>
+  <li>Click the ➕ on the top right</li>
+  <li>Choose <b>New repository</b></li>
+  <li>Name your project "planets"</li>
+  <li>Pick an Owner, if necessary</li>
+  <li>Set the visibility to <b>Public</b></li>
+  <li>Do not add a README file, .gitignore or license</li>
+  <li>Click <b>Create repository</b></li>
+</ul>
+
+---
+
+<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/port-g38ab8a46f_1920.jpg" -->
+## Just Another Repository?
+
+You effectively executed on the GitHub server:
+<pre data-id="code-animation" style="width: max-content;"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers>
+$ mkdir planets 
+$ cd planets
+$ git init
+</code></pre>
+
+---
+
+<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/port-g38ab8a46f_1920.jpg" -->
+## The Holy Realms of Git - Extended
+
+<ul>
+  <li><b>workspace</b>&nbsp;&nbsp;📂</li>
+  <ul>
+    <li>Your filesystem</li>
+  </ul>
+  <li><b>index</b>&nbsp;&nbsp;🕒
+    <ul>
+      <li>Staging area</li>
+      <li>Files wait patiently to be committed</li>
+    </ul>
+  </li>
+  <li><b>local repository</b>&nbsp;&nbsp;🗂️
+    <ul>
+      <li>Contains branches, commits, history, etc.</li>
+    </ul>
+  </li>
+  <li class="fragment"><b>remote repository</b>&nbsp;&nbsp;☁️
+    <ul>
+      <li>Cloud or self-hostet Git{Hub,Lab}</li>
+      <li>Shared folder</li>
+    </ul>
+  </li>
+<ul>
+
+---
+
+<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/port-g38ab8a46f_1920.jpg" -->
+## More Is Better
+
+<div class="r-stack">
+  <img class="fragment fade-out" data-fragment-index="0" src="https://swcarpentry.github.io/git-novice/fig/git-staging-area.svg">
+  <img class="fragment fade-in" data-fragment-index="0" src="https://swcarpentry.github.io/git-novice/fig/git-freshly-made-github-repo.svg">
+</div>
+
+---
+
+<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/port-g38ab8a46f_1920.jpg" -->
+## Connecting Worlds
+
+Thankfully GitHub tells us how to proceed:
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers>
+$ git remote add origin git@github.com:vlad/planets.git
+
+# Confirm that it worked
+$ git remote -v
+origin   git@github.com:vlad/planets.git (fetch)
+origin   git@github.com:vlad/planets.git (push)
+</code></pre>
+
+- **origin** is a local alias for the remote repository
+- It could be anything, but **origin** is a strong convention
+
+<footer>
+A "remote" can also be a local folder or a network drive you share with someone
+</footer>
+
+---
+
+<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/port-g38ab8a46f_1920.jpg" -->
+## Hi GitHub! 👋
+
+<pre style="height: 300px;" data-id="code-animation"><code style="overflow: hidden; height: 300px;" data-trim class="bash" data-line-numbers="1-10|12-14|16-18">
+$ ssh -T git@github.com  # Use your own URL here
+The authenticity of host 'github.com (192.30.255.112)' can’t be
+established. RSA key fingerprint is
+SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+Please type 'yes', 'no' or the fingerprint: yes
+Warning: Permanently added 'github.com' (RSA) to the list
+of known hosts.
+git@github.com: Permission denied (publickey).
+
+# Oh right, GitHub does not know my SSH key yet!
+$ cat ~/.ssh/id_ed25519.pub
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AA vlad@tran.sylvan.ia
+
+# Try again (fingers crossed)
+$ ssh -T git@github.com  # Use your own URL here
+Hi vlad! You've successfully authenticated, but GitHub does not provide shell access.
+</code></pre>
+
+<ul class="fragment" data-fragment-index="2">
+  <li>Click on your Profile Image, choose <b>Settings</b></li>
+  <li>Choose <b>SSH and GPG keys</b></li>
+  <li>Click on <b>New SSH key</b></li>
+  <li>Paste the public(!) key from the terminal and give it a name</li>
+  <li>Click on <b>Add SSH key</b></li>
+</ul>
+
+---
+
+<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/port-g38ab8a46f_1920.jpg" -->
+## Spread Your Wings
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers>
+$ git push -u origin main  # -u means "set upstream"
+Enumerating objects: 16, done.
+Counting objects: 100% (16/16), done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (11/11), done.
+Writing objects: 100% (16/16), 1.45 KiB | 372.00 KiB/s, done.
+Total 16 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), done.
+To https://github.com/vlad/planets.git
+ * [new branch]      main -> main
+</code></pre>
+
+---
+
+<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/port-g38ab8a46f_1920.jpg" -->
+## Password Managers
+
+Windows will try to use a password manager to take care of SSH passwords. If you prefer typing it instead, you can disable it temporarily with
+<pre data-id="code-animation" style="width: max-content;"><code style="overflow: hidden;" data-trim class="bash">
+$ unset SSH_ASKPASS git push 
+</code></pre>
+or permanently through adding
+<pre data-id="code-animation" style="width: max-content;"><code style="overflow: hidden;" data-trim class="bash">
+&nbsp;unset SSH_ASKPASS 
+</code></pre>
+at the end of your **.bashrc** file.
+
+---
+
+<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/port-g38ab8a46f_1920.jpg" -->
+## Connected 🔌
+
+<img src="https://swcarpentry.github.io/git-novice/fig/github-repo-after-first-push.svg">
+
+---
+
+<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/port-g38ab8a46f_1920.jpg" -->
+## Explore the GitHub UI 1/2
+
+- Browse the **planets** repository on GitHub
+- Click on **X Commits** above your files
+- Click on the ellipsis **· · ·** next to a commit
+- Click on a commit itself
+- Click on **Browse files**
+
+<p class="fragment">
+How can you get the same information from the terminal?
+</p>
+<pre class="fragment" data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers>
+git log
+git diff ID1..ID2
+git checkout ID  # don't forget to put back the repo in a good state!
+</code></pre>
+<p class="fragment">
+Note the <b>relative</b> timestamp in the commit list. What is the <b>absolute</b> time of a commit?
+</p>
+<p class="fragment">
+Hover over the timestamp.
+</p>
+
+---
+
+<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/port-g38ab8a46f_1920.jpg" -->
+## Explore the GitHub UI 2/2
+
+How can you ...
+- download a file from GitHub?
+- upload a file to GitHub?
+- create a file on GitHub?
+- edit a file from GitHub?
+
+---
+
+<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/port-g38ab8a46f_1920.jpg" -->
+## Quiz!
+
+<ul>
+  <li>What is the difference between <b>commit</b> and <b>push</b>?</li>
+  <ul>
+    <li class="fragment"><b>commit</b> writes staged changes to the local repository</li>
+    <li class="fragment"><b>push</b> updates the remote repository with local changes</li>
+  </ul>
+</ul>
+
+---
+
+<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/port-g38ab8a46f_1920.jpg" -->
+## Remotes: Key Points
+
+<ul style="font-size: smaller;">
+  <li>A local Git repository can be connected to one or more remote repositories</li>
+  <li>Use the SSH protocol to connect to remote repositories</li>
+  <li><b>git push</b> copies changes from a local repository to a remote repository</li>
+  <li><b>git pull</b> copies changes from a remote repository to a local repository</li>
+</ul>
+
+</section>
+<section data-markdown="08_collaborating.md" data-separator=^\r?\n===\r?\n$ data-separator-vertical=^\r?\n---\r?\n$>
+<!-- .slide: id="collaborating" data-state="standard 7" data-background="./files/hands-g5b2300b1e_1920.jpg" -->
+<!-- Image by <a href="https://pixabay.com/users/jarmoluk-143740/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2847508">Michal Jarmoluk</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2847508">Pixabay</a> -->
+# Collaborating
+How can we collaborate
+
+- with others within one repository?
+- with people who we might not know yet?
+
+---
+
+<!-- .slide: data-state="standard 7" data-background="./files/hands-g5b2300b1e_1920.jpg" -->
+## Not a Big Issue?
+
+- Organize TODOs, bugs, etc. of your project
+- Issues can have ...
+  - One or more assignees
+  - Labels
+  - Due dates
+  - Links to other issues
+  - ... and whole discussions below
+
+---
+
+<!-- .slide: data-state="standard 7" data-background="./files/hands-g5b2300b1e_1920.jpg" -->
+## Collaborative Workflow
+
+- Assign an issue to yourself
+- Create a new branch
+- Make reviewable changes
+- Open a **pull request**
+- Someone else reviews and approves the pull request
+- Merge the pull request
+- Use GitHubs **Insights ⇨ Network** to visualize the changes
+
+---
+
+<!-- .slide: data-state="standard 7" data-background="./files/hands-g5b2300b1e_1920.jpg" -->
+## Exercise!
+
+<ol style="font-size: smaller;">
+  <li>Log into GitHub and create a new repository</li>
+  <li>Make the repository public</li>
+  <li><b>git clone</b> it to your desktop</li>
+  <li>Add some code and push the changes to the repository</li>
+  <li>Add one person as a collaborator (Settings -> Collaborators)</li>
+  <li>Clone that repo</li>
+  <li>Make changes on a new branch</li>
+  <li>Push the changes</li>
+  <li>Submit a Pull Request</li>
+  <li>Wait for approval</li>
+  <li>At the same time: review a collaborators Pull Request</li>
+  <li>(Bonus) Learn about protecting branches and try it out.</li>
+<ol>
+
+---
+
+<!-- .slide: data-state="standard 7" data-background="./files/hands-g5b2300b1e_1920.jpg" -->
+## Distributed Workflow
+
+<ol style="font-size: smaller;">
+  <li>Remove your group member(s) as collaborators from your repository</li>
+  <li>Fork another group members repo (Repository page, top right corner)</li>
+  <li>Create an issue on the original repository</li>
+  <li>Clone your forked repo to your computer</li>
+  <li>Make some changes, use a somewhat real-world example so it makes sense to review it (but don't overdo it)</li>
+  <li>Push it to your fork</li>
+  <li>Make a pull request from your fork to the main repository mentioning the issue</li>
+  <li>(Consider turning your Pull Request into a draft Pull Request)</li>
+  <li>Let your code be reviewed by tagging the repo owner using (@Username)</li>
+  <li>At the same time: review Pull Request using comments on individual lines. Try to act as if it was a real peer review as much as possible.</li>
+  <li>Accept or reject the Pull Request</li>
+  <li>(Optionally) learn about merge conflicts and try it out in your collaboration.</li>
+</ol>
+
+---
+
+<!-- .slide: data-state="standard 7" data-background="./files/hands-g5b2300b1e_1920.jpg" -->
+## Remotes: Key Points
+
+- Git and GitHub are superpowerful, not just for version control, but as tools for collaborative development
+- Do code reviews and be constructive in them!
+- Use centralized flow for internal collaborations
+- Use distributed flow for external collaborations
+
+
+</section>
+<section data-markdown="09_conflicts.md" data-separator=^\r?\n===\r?\n$ data-separator-vertical=^\r?\n---\r?\n$>
+<!-- .slide: id="conflicts" data-state="standard 7" data-background="./files/seagull-ga3abb7684_1920.jpg" -->
+<!-- Image by <a href="https://pixabay.com/users/smuldur-5589717/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4034308">Şinasi Müldür</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4034308">Pixabay</a> -->
+# Conflicts
+
+- What do I do when my changes conflict with someone else’s?
+
+---
+
+<!-- .slide: data-state="standard 7" data-background="./files/seagull-ga3abb7684_1920.jpg" -->
+## Merge Conflicts
+
+- Merge conflicts occur when you try to merge a branch/stash that conflicts with your local version, e.g.
+  - Overlapping edits in the same file (obvious)
+  - Win vs Linux file endings, tabs to spaces (invisible)
+
+<br>
+<br>
+
+1. Don't panic! You can always abort the merge
+1. Git gives you helpful error messages and the tools to resolve the conflicts
+1. You are not the first one to encounter that specific error, google and stackoverflow are your friend
+
+---
+
+<!-- .slide: data-state="standard 7" data-background="./files/seagull-ga3abb7684_1920.jpg" data-auto-animate -->
+## Making of a Conflict
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="1-12|14-16|18-23|25-32">
+$ git pull
+$ cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+
+$ code mars.txt
+cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+This line is new
+
+$ git add .
+$ git commit -m "add line"
+$ git push
+
+$ code mars.txt
+cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+This line is edited locally my Wolfman
+
+[Edit the same file with the GitHub Web IDE]
+
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+This line is edited on remote by Dracula
+
+[Only for this hands-on: commit to 'main' branch]
+
+$ cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+This line is edited locally by Wolfman
+||||||| c500f36
+This line is new
+=======
+This line is edited on remote by Dracula
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; e7c6d3cb58004414f4800c26d82b629259a9b6b4
+</code></pre>
+
+---
+
+<!-- .slide: data-state="standard 7" data-background="./files/seagull-ga3abb7684_1920.jpg" data-auto-animate -->
+## Making of a Conflict
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="tap" data-line-numbers="34-50">
+$ git pull
+$ cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+
+$ code mars.txt
+cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+This line is new
+
+$ git add .
+$ git commit -m "add line"
+$ git push
+
+$ code mars.txt
+cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+This line is edited locally my Wolfman
+
+[Edit the same file with the GitHub Web IDE]
+
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+This line is edited on remote by Dracula
+
+[Only for this hands-on: commit to 'main' branch]
+
+$ cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+This line is edited locally by Wolfman
+||||||| c500f36
+This line is new
+=======
+This line is edited on remote by Dracula
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; e7c6d3cb58004414
+</code></pre>
+
+---
+
+<!-- .slide: data-state="standard 7" data-background="./files/seagull-ga3abb7684_1920.jpg" data-auto-animate -->
+## Making of a Conflict
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="tap" data-line-numbers="34-50">
+$ git pull
+$ cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+
+$ code mars.txt
+cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+This line is new
+
+$ git add .
+$ git commit -m "add line"
+$ git push
+
+$ code mars.txt
+cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+This line is edited locally my Wolfman
+
+[Edit the same file with the GitHub Web IDE]
+
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+This line is edited on remote by Dracula
+
+[Only for this hands-on: commit to 'main' branch]
+
+$ cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD              # << local separator, local commit ID
+This line is edited locally by Wolfman
+||||||| c500f36
+This line is new
+=======
+This line is edited on remote by Dracula
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; e7c6d3cb58004414
+</code></pre>
+
+---
+
+<!-- .slide: data-state="standard 7" data-background="./files/seagull-ga3abb7684_1920.jpg" data-auto-animate -->
+## Making of a Conflict
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="tap" data-line-numbers="34-50">
+$ git pull
+$ cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+
+$ code mars.txt
+cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+This line is new
+
+$ git add .
+$ git commit -m "add line"
+$ git push
+
+$ code mars.txt
+cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+This line is edited locally my Wolfman
+
+[Edit the same file with the GitHub Web IDE]
+
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+This line is edited on remote by Dracula
+
+[Only for this hands-on: commit to 'main' branch]
+
+$ cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD              # << local separator, local commit ID
+This line is edited locally by Wolfman
+||||||| c500f36           # || base separator, base commit ID
+This line is new
+=======
+This line is edited on remote by Dracula
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; e7c6d3cb58004414
+</code></pre>
+
+---
+
+<!-- .slide: data-state="standard 7" data-background="./files/seagull-ga3abb7684_1920.jpg" data-auto-animate -->
+## Making of a Conflict
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="tap" data-line-numbers="34-50">
+$ git pull
+$ cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+
+$ code mars.txt
+cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+This line is new
+
+$ git add .
+$ git commit -m "add line"
+$ git push
+
+$ code mars.txt
+cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+This line is edited locally my Wolfman
+
+[Edit the same file with the GitHub Web IDE]
+
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+This line is edited on remote by Dracula
+
+[Only for this hands-on: commit to 'main' branch]
+
+$ cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD              # << local separator, local commit ID
+This line is edited locally by Wolfman
+||||||| c500f36           # || base separator, base commit ID
+This line is new
+=======                   # == remote separator
+This line is edited on remote by Dracula
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; e7c6d3cb58004414
+</code></pre>
+
+---
+
+<!-- .slide: data-state="standard 7" data-background="./files/seagull-ga3abb7684_1920.jpg" data-auto-animate -->
+## Making of a Conflict
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="tap" data-line-numbers="34-50">
+$ git pull
+$ cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+
+$ code mars.txt
+cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+This line is new
+
+$ git add .
+$ git commit -m "add line"
+$ git push
+
+$ code mars.txt
+cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+This line is edited locally my Wolfman
+
+[Edit the same file with the GitHub Web IDE]
+
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+This line is edited on remote by Dracula
+
+[Only for this hands-on: commit to 'main' branch]
+
+$ cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD              # << local separator, local commit ID
+This line is edited locally by Wolfman
+||||||| c500f36           # || base separator, base commit ID
+This line is new
+=======                   # == remote separator
+This line is edited on remote by Dracula
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; e7c6d3cb58004414  # >> end separator, remote commit ID
+</code></pre>
+
+---
+
+<!-- .slide: data-state="standard 7" data-background="./files/seagull-ga3abb7684_1920.jpg" -->
+
+## Which Reality?
+
+<img src="https://swcarpentry.github.io/git-novice/fig/conflict.svg">
+
+---
+
+<!-- .slide: data-state="standard 7" data-background="./files/seagull-ga3abb7684_1920.jpg" -->
+## Resolving a Conflict
+
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers>
+$ code mars.txt
+$ cat mars.txt
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+Choose which lines to keep  # new ⬇️
+Remove separators
+You don’t even have to keep any of the suggested lines :-o
+</code></pre>
+
+---
+
+<!-- .slide: data-state="standard 7" data-background="./files/seagull-ga3abb7684_1920.jpg" -->
+## Binary files
+
+<blockquote data-fragment-index="1" style="text-align: left;">
+<span style="font-style: normal;">🧛</span> That is actually pretty straightforward. But how would that work for binary files like images?
+</blockquote>
+<blockquote class="fragment" data-fragment-index="2" style="text-align: right;">
+Uhm. I do not know. Let's try it out. <span style="font-style: normal;">🐺</span>
+</blockquote>
+
+---
+
+<!-- .slide: data-state="standard 7" data-background="./files/seagull-ga3abb7684_1920.jpg" -->
+## Exercise!
+
+<ol style="font-size: smaller;">
+  <li>Download your two favorite images of Mars</li>
+  <li>Name one mars.jpg and upload it on GitHub</li>
+  <li>Name the other one also mars.jpg, move it into your <b>planets</b> folder</li>
+  <li>Add and commit the image</li>
+  <li><b>git pull</b> and read the error message<br>
+<pre class="fragment" data-fragment-index="1" style="width: max-content;" data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash">
+&nbsp;warning: Cannot merge binary files: mars.jpg (HEAD vs. 012) 
+&nbsp;# Oh no! What now?!
+</code></pre>
+</li>
+  <li class="fragment" data-fragment-index="2">Checkout the <b>HEAD</b> version of mars.jpg</li>
+  <li class="fragment" data-fragment-index="2">Rename the file
+<pre data-id="code-animation" style="width: max-content;"><code style="overflow: hidden;" data-trim class="bash">
+&nbsp;$ mv mars.jpg mars_1.jpg 
+</code></pre>
+  </li>
+  <li class="fragment" data-fragment-index="2">Checkout the <b>012</b> version of mars.jpg</li>
+  <li class="fragment" data-fragment-index="2">Rename that file with a different name</li>
+  <li class="fragment" data-fragment-index="2">Add both files and commit</li>
+<ol>
+
+---
+
+<!-- .slide: data-state="standard 7" data-background="./files/seagull-ga3abb7684_1920.jpg" -->
+## A Typical Work Session
+
+- Put the actions in the correct order
+- What commands are necessary to achieve them?
+
+<table style="font-size: smaller; width: 100%; margin-top: 1em;">
+ <tr>
+   <th></th>
+   <th>action</th>
+   <th>command</th>
+ </tr>
+ <tr>
+   <td>1</td>
+   <td contenteditable="true">Make changes to a file</td>
+   <td style="color: blue;" contenteditable="true"></td>
+ </tr>
+ <tr>
+   <td>2</td>
+   <td contenteditable="true">Update remote to match local repo</td>
+   <td style="color: blue;">echo 100 >> numbers.txt</td>
+ </tr>
+ <tr>
+   <td>3</td>
+   <td contenteditable="true">Update local to match remote repo</td>
+   <td style="color: blue;" contenteditable="true"></td>
+ </tr>
+ <tr>
+   <td>4</td>
+   <td contenteditable="true">Stage changes to be committed</td>
+   <td style="color: blue;" contenteditable="true"></td>
+ </tr>
+ <tr>
+   <td>5</td>
+   <td contenteditable="true">Commit changes to local repo</td>
+   <td style="color: blue;" contenteditable="true"></td>
+ </tr>
+ <tr>
+   <td>6</td>
+   <td><b style="color: blue;">Celebrate!</b></td>
+   <td><b style="color: blue;">AFK</b></td>
+ </tr>
+</table>
+
+---
+
+<!-- .slide: data-state="standard 7" data-background="./files/seagull-ga3abb7684_1920.jpg" -->
+## Remotes: Key Points
+
+- Conflicts occur when two or more people change the same lines of the same file.
+- Git does not allow people to overwrite each other’s changes blindly, but highlights conflicts so that they can be resolved.
+
+
+</section>
+
+      </div>
+    </div>
+
+    <script src="reveal.js/4.3.1/reveal.js/dist/reveal.js"></script>
+    <script src="reveal.js/4.3.1/reveal.js/plugin/zoom/zoom.js"></script>
+    <script src="reveal.js/4.3.1/reveal.js/plugin/math/math.js"></script>
+    <script src="reveal.js/4.3.1/reveal.js/plugin/notes/notes.js"></script>
+    <script src="reveal.js/4.3.1/reveal.js/plugin/search/search.js"></script>
+    <script src="reveal.js/4.3.1/reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="reveal.js/4.3.1/reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="reveal.js/4.3.1/reveal.js-plugins/menu/menu.js"></script>
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="reveal.js/4.3.1/reveal.js-plugins/menu/font-awesome/css/fontawesome.css">
+
+    <script>
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        hash: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        menu: { // Menu works best with font-awesome installed: sudo apt-get install fonts-font-awesome
+          themes: false,
+          transitions: false,
+          markers: true,
+          hideMissingTitles: true,
+        },
+        dependencies: [
+          {src: 'reveal.js/4.3.1/reveal.js-plugins/reveal.js-d3/reveald3.js'}
+        ],
+        plugins: [ RevealMarkdown, RevealHighlight, RevealMath.KaTeX, RevealMenu, RevealNotes, RevealSearch, RevealZoom ]
+      });
+    </script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var decoration = $('#decoration').html();
+      if ( window.location.search.match( /print-pdf/gi ) ) {
+        // for pdf export
+        // 3. On Reveal.js ready event, copy decoration <div> into each `.slide-background` <div>
+        Reveal.addEventListener( 'ready', function( event ) {
+          $('.slide-background').append(decoration);
+        });
+      }
+      else {
+        // for viewing slides
+        $('div.reveal').append(decoration);
+        $('#decoration').remove(); // without this the fadeIn/fadeOut below does not work. why is this necessary?
+      };
+      function setLogoStyle(style) {
+        //style must be one of {"logo_color","logo_white","logo_part_white"}
+
+        //unset everything
+        document.getElementById("logo_color").style.opacity = 0;
+        document.getElementById("logo_white").style.opacity = 0;
+        document.getElementById("logo_part_white").style.opacity = 0;
+
+        //set only what we want
+        document.getElementById(style).style.opacity = 1;
+      };
+      var overview_shown = false;
+      function getOpacity(data_state) {
+        var opacity = 0.8;
+        for (let i = 0; i < 11; i++) {
+          if (data_state.includes(i)) { opacity = i/10; console.log("opacity set to " + opacity)}
+        };
+        return opacity
+      };
+      function addDecorations() {
+        console.log("== set decorations ==")
+        var currentSlide = Reveal.getCurrentSlide();
+        console.log(currentSlide.querySelector("footer"));
+        if (currentSlide.contains(currentSlide.querySelector('footer')))
+        {
+          document.getElementById("footer").innerHTML = currentSlide.querySelector('footer').innerHTML;
+          document.getElementById("blue_strip").style.right = 0;
+          console.log("footer (and blue_strip)");
+        } else {
+          document.getElementById("blue_strip").style.right = "-" + document.getElementById("blue_strip").offsetWidth + "px";
+          console.log("no footer");
+        };
+        if ( currentSlide.getAttribute('data-state') )
+        {
+          var data_state = currentSlide.getAttribute('data-state')
+          var opacity = getOpacity(data_state);
+          console.log("DS" + data_state)
+          // pre-set slide designs
+
+          // standard
+          if ( data_state.includes("standard"))
+          {
+            data_state += " logo yellow_flag white_overlay";
+          };
+
+          // two_pane
+          if ( data_state.includes("two_pane"))
+          {
+            data_state += " logo yellow_flag white_overlay blue_pane_right";
+          };
+
+          // about
+          if ( data_state.includes("about"))
+          {
+            data_state += " logo white_overlay blue_pane_left purple_half_circle_top purple_strip_bottom yellow_half_strip";
+          };
+
+          // touch
+          if ( data_state.includes("touch"))
+          {
+            data_state += " logo blue_overlay touch_pane purple_blob right_e_bottom";
+          };
+
+          // individual elements
+
+          // purple overlay
+          if ( data_state.includes("purple_overlay"))
+          {
+            document.getElementById("purple_overlay").style.opacity = opacity;
+            document.getElementById("purple_overlay").style.transform = "translateY(0)";
+            document.getElementById("logo_color").style.opacity = 0;
+            document.getElementById("logo_white").style.opacity = 0;
+            document.getElementById("logo_part_white").style.opacity = 1;
+            currentSlide.classList.remove("has-light-background");
+            console.log("purple overlay");
+          } else {
+            document.getElementById("purple_overlay").style.opacity = 0;
+            console.log("no purple overlay");
+          };
+
+          // white overlay
+          if ( data_state.includes("white_overlay"))
+          {
+            document.getElementById("white_overlay").style.opacity = opacity;
+            document.getElementById("white_overlay").style.transform = "translateY(0)";
+            document.getElementById("logo_color").style.opacity = 1;
+            document.getElementById("logo_white").style.opacity = 0;
+            document.getElementById("logo_part_white").style.opacity = 0;
+            currentSlide.classList.add("has-light-background");
+            console.log("white overlay");
+          } else {
+            document.getElementById("white_overlay").style.opacity = 0;
+            console.log("no white overlay");
+          };
+
+          // black overlay
+          if ( data_state.includes("black_overlay"))
+          {
+            document.getElementById("black_overlay").style.opacity = opacity;
+            document.getElementById("black_overlay").style.transform = "translateY(0)";
+            document.getElementById("logo_color").style.opacity = 0;
+            document.getElementById("logo_white").style.opacity = 0;
+            document.getElementById("logo_part_white").style.opacity = 1;
+            currentSlide.classList.remove("has-light-background");
+            console.log("black overlay");
+          } else {
+            document.getElementById("black_overlay").style.opacity = 0;
+            console.log("no black overlay");
+          };
+
+          // blue overlay
+          if ( data_state.includes("blue_overlay"))
+          {
+            document.getElementById("blue_overlay").style.opacity = opacity;
+            document.getElementById("blue_overlay").style.transform = "translateY(0)";
+            document.getElementById("logo_color").style.opacity = 0;
+            document.getElementById("logo_white").style.opacity = 1;
+            document.getElementById("logo_part_white").style.opacity = 0;
+            currentSlide.classList.remove("has-light-background");
+            console.log("blue overlay");
+          } else {
+            document.getElementById("blue_overlay").style.opacity = 0;
+            console.log("no blue overlay");
+          };
+
+          // blue pane right
+          if ( data_state.includes("blue_pane_right"))
+          {
+            document.getElementById("blue_pane_right").style.opacity = 1;
+            currentSlide.classList.remove("has-dark-background");
+            currentSlide.classList.add("has-light-background");
+            console.log("blue_pane_right");
+          } else {
+            document.getElementById("blue_pane_right").style.opacity = 0;
+            console.log("no blue_pane_right");
+          };
+
+          // blue pane left
+          if ( data_state.includes("blue_pane_left"))
+          {
+            document.getElementById("blue_pane_left").style.opacity = 1;
+            setLogoStyle("logo_white");
+            currentSlide.classList.remove("has-dark-background");
+            currentSlide.classList.add("has-light-background");
+            console.log("blue_pane_left");
+          } else {
+            document.getElementById("blue_pane_left").style.opacity = 0;
+            console.log("no blue_pane_left");
+          };
+
+          // touch pane
+          if ( data_state.includes("touch_pane"))
+          {
+            document.getElementById("touch_pane").style.opacity = 1;
+            setLogoStyle("logo_color");
+            currentSlide.classList.remove("has-light-background");
+            currentSlide.classList.add("has-dark-background");
+            console.log("touch_pane");
+          } else {
+            document.getElementById("touch_pane").style.opacity = 0;
+            console.log("no touch_pane");
+          };
+
+          // logo
+          if ( data_state.includes("logo"))
+          {
+            document.getElementById("logo_color").style.left = 3 + "vw";
+            document.getElementById("logo_part_white").style.left = 3 + "vw";
+            document.getElementById("logo_white").style.left = 3 + "vw";
+            console.log("logo");
+          } else {
+            document.getElementById("logo_color").style.left = -12 + "vw";
+            document.getElementById("logo_part_white").style.left = -12 + "vw";
+            document.getElementById("logo_white").style.left = -12 + "vw";
+            console.log("no logo");
+          };
+
+          // yellow strip
+          if ( data_state.includes("yellow_strip"))
+          {
+            document.getElementById("yellow_strip").style.left = 0;
+            console.log("yellow_strip");
+          } else {
+            document.getElementById("yellow_strip").style.left = -10 + "vw";
+            console.log("no yellow_strip");
+          };
+
+          // yellow flag
+          if ( data_state.includes("yellow_flag"))
+          {
+            document.getElementById("yellow_flag").style.left = 0;
+            console.log("yellow_flag");
+          } else {
+            document.getElementById("yellow_flag").style.left = -10 + "vh";
+            console.log("no yellow_flag");
+          };
+
+          // purple half circle top
+          if ( data_state.includes("purple_half_circle_top"))
+          {
+            document.getElementById("purple_half_circle_top").style.top = 0;
+            setLogoStyle("logo_part_white");
+            console.log("purple_half_circle_top");
+          } else {
+            document.getElementById("purple_half_circle_top").style.top = -17 + "vw";
+            console.log("no purple_half_circle_top");
+          };
+
+          // purple half circle bottom
+          if ( data_state.includes("purple_half_circle_bottom"))
+          {
+            document.getElementById("purple_half_circle_bottom").style.bottom = 0;
+            document.getElementById("yellow_flag").style.bottom = 20 + "vh";
+            console.log("purple_half_circle_bottom");
+          } else {
+            document.getElementById("purple_half_circle_bottom").style.bottom = -10 + "vw";
+            document.getElementById("yellow_flag").style.bottom = 5 + "vh";
+            console.log("no purple_half_circle_bottom");
+          };
+
+          // purple strip bottom
+          if ( data_state.includes("purple_strip_bottom"))
+          {
+            document.getElementById("purple_strip_bottom").style.bottom = 0;
+            console.log("purple_strip_bottom");
+          } else {
+            document.getElementById("purple_strip_bottom").style.bottom = -10 + "vw";
+            console.log("no purple_strip_bottom");
+          };
+
+          // yellow_half_strip
+          if ( data_state.includes("yellow_half_strip"))
+          {
+            document.getElementById("yellow_half_strip").style.bottom = 0;
+            console.log("yellow_half_strip");
+          } else {
+            document.getElementById("yellow_half_strip").style.bottom = -25 + "vw";
+            console.log("no yellow_half_strip");
+          };
+
+          // purple blob
+          if ( data_state.includes("purple_blob"))
+          {
+            document.getElementById("purple_blob").style.top = 0;
+            console.log("purple_blob");
+          } else {
+            document.getElementById("purple_blob").style.top = -50 + "vh";
+            console.log("no purple_blob");
+          };
+
+          // right_e
+          if ( data_state.includes("right_e_top"))
+          {
+            document.getElementById("right_e").style.top = 10 + "vh";
+            document.getElementById("right_e").style.right = 0;
+            console.log("right_e_top");
+          } else if ( data_state.includes("right_e_bottom")){
+            document.getElementById("right_e").style.top = 60 + "vh";
+            document.getElementById("right_e").style.right = 0;
+            console.log("right_e_bottom");
+          } else {
+            document.getElementById("right_e").style.right = -4 + "vw";
+            console.log("no right_e");
+          };
+
+          // clear the background so that the overlays don't interfere
+          // with underlying iframe
+          if ( data_state.includes("clear_background"))
+          {
+            document.getElementById("purple_overlay").style.transform = "translateY(100vh)";
+            document.getElementById("white_overlay").style.transform = "translateY(100vh)";
+            document.getElementById("black_overlay").style.transform = "translateY(100vh)";
+            document.getElementById("blue_overlay").style.transform = "translateY(100vh)";
+            document.getElementById("blue_pane_right").style.transform = "translateY(100vh)";
+            document.getElementById("blue_pane_left").style.transform = "translateY(100vh)";
+            document.getElementById("touch_pane").style.transform = "translateY(100vh)";
+          };
+        }
+        else
+        {
+          console.log("nothing special")
+        };
+      };
+
+      function removeDecorations() {
+        console.log("removeDecorations")
+        document.getElementById("purple_overlay").style.opacity = 0;
+        document.getElementById("white_overlay").style.opacity = 0;
+        document.getElementById("black_overlay").style.opacity = 0;
+        document.getElementById("blue_overlay").style.opacity = 0;
+        document.getElementById("blue_pane_right").style.opacity = 0;
+        document.getElementById("blue_pane_left").style.opacity = 0;
+        document.getElementById("touch_pane").style.opacity = 0;
+        document.getElementById("logo_color").style.left = -12 + "vw";
+        document.getElementById("logo_part_white").style.left = -12 + "vw";
+        document.getElementById("logo_white").style.left = -12 + "vw";
+        document.getElementById("yellow_strip").style.left = -10 + "vw";
+        document.getElementById("yellow_flag").style.left = -10 + "vh";
+        document.getElementById("purple_half_circle_top").style.top = -17 + "vw";
+        document.getElementById("purple_half_circle_bottom").style.bottom = -10 + "vw";
+        document.getElementById("purple_strip_bottom").style.bottom = -10 + "vw";
+        document.getElementById("yellow_half_strip").style.bottom = -25 + "vw";
+        document.getElementById("purple_blob").style.top = -50 + "vh";
+        document.getElementById("right_e").style.right = -4 + "vw";
+        document.getElementById("blue_strip").style.right = "-" + document.getElementById("blue_strip").offsetWidth + "px";
+      };
+
+      Reveal.on( 'slidechanged', event => {
+        if (overview_shown == false)
+        {
+          addDecorations();
+        }
+      });
+      Reveal.on( 'overviewshown', event => {
+        overview_shown = true;
+        removeDecorations();
+      });
+      Reveal.on( 'overviewhidden', event => {
+        overview_shown = false;
+        addDecorations();
+      });
+    </script>
+
+  </body>
+</html>
