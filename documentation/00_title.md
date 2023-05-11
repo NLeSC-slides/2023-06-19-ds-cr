@@ -246,7 +246,7 @@ _Let's create documentation four our projects with Sphinx_
 
 + What questions do you still have?
 + Whether there are any incremental improvements that can benefit your projects?
-+What is nice that we learnt but is overkill for your current work?
++ What is nice that we learnt but is overkill for your current work?
 
 ---
 
