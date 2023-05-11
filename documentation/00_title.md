@@ -1,17 +1,17 @@
 <!--
-title: Code Modularization
-description: Code Modularization
-author: Barbara Vreede
+title: Documentation
+description: Day 3 Code Refinery TUSAIL
+author: Luisa Orozco
 version: 4.3.1
-plugins: RevealMarkdown, RevealHighlight, RevealMath.KaTeX, RevealMenu, RevealNotes, RevealSearch, RevealZoom
+plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, RevealMenu, RevealNotes, RevealSearch, RevealZoom
 -->
 
 <!-- .slide: data-state="blue_overlay yellow_flag yellow_strip purple_half_circle_bottom purple_blob right_e_top" data-background-video="./files/Mood video Homepage 2.mp4" data-background-video-loop data-background-video-muted="true" -->
 
-# Code Modularization
+# Testing
 ## Subtitle
 
-[Barbara Vreede](mailto:b.vreede@esciencecenter.nl) |  [Ole Mussmann](mailto:o.mussmann@esciencecenter.nl) | [Luisa Orozco](mailto:l.orozco@esciencecenter.nl) 
+[Luisa Orozco](mailto:l.orozco@esciencecenter.nl) 
 
 ===
 
