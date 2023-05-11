@@ -3,7 +3,7 @@ title: Git and GitHub
 description: Version control with Git and collaboration on GitHub
 author: Ole Mussmann
 version: 4.3.1
-plugins: RevealMarkdown, RevealHighlight, RevealMath.KaTeX, RevealMenu, RevealNotes, RevealSearch, RevealZoom
+plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, RevealMenu, RevealNotes, RevealSearch, RevealZoom
 -->
 
 <!-- .slide: data-state="blue_overlay yellow_flag yellow_strip purple_half_circle_bottom purple_blob right_e_top" data-background-video="./files/Mood video Homepage 2.mp4" data-background-video-loop data-background-video-muted="true" -->
@@ -15,7 +15,7 @@ plugins: RevealMarkdown, RevealHighlight, RevealMath.KaTeX, RevealMenu, RevealNo
 
 [Barbara Vreede](mailto:b.vreede@esciencecenter.nl) | [Ole Mussmann](mailto:o.mussmann@esciencecenter.nl)
 
-===
+---
 
 <!-- .slide: data-state="standard" data-background="./files/desk-593327_1920.jpg"-->
 ## Table of Contents

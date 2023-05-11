@@ -6,7 +6,7 @@
 
     <title>Git and Software Best Practices at TUSAIL</title>
 
-    <meta name="description" content="">
+    <meta name="description" content="A four-day course">
     <meta name="author" content="Barbara Vreede, Ole Mussmann, Luisa Orozco">
 
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -89,10 +89,10 @@
         <section data-markdown="00_title.md" data-separator=^\r?\n===\r?\n$ data-separator-vertical=^\r?\n---\r?\n$>
 <!--
 title: Git and Software Best Practices at TUSAIL
-description: 
+description: A four-day course
 author: Barbara Vreede, Ole Mussmann, Luisa Orozco
 version: 4.3.1
-plugins: RevealMarkdown, RevealHighlight, RevealMath.KaTeX, RevealMenu, RevealNotes, RevealSearch, RevealZoom
+plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, RevealMenu, RevealNotes, RevealSearch, RevealZoom
 -->
 
 <!-- .slide: data-state="blue_overlay yellow_flag yellow_strip purple_half_circle_bottom purple_blob right_e_top" data-background-video="./files/Mood video Homepage 2.mp4" data-background-video-loop data-background-video-muted="true" -->
@@ -104,11 +104,11 @@ plugins: RevealMarkdown, RevealHighlight, RevealMath.KaTeX, RevealMenu, RevealNo
 <div style="width: 49%; float: left;">
 <ul>
 <li style="list-style-type: none;">Tue 2023-05-09</li>
-<li><a href="./git">Git</a></li>
-<br>
-<li style="list-style-type: none;">Wed 2023-05-10</li>
 <li><a href="./good_practices">Intro to Good Practices</a></li>
-<li><a href="./git/#?">Collaboration with GitHub</a></li>
+<li><a href="./git">Git</a></li>
+<li style="list-style-type: none;">Wed 2023-05-10</li>
+<li><a href="./git/#/collaborating">Collaboration with GitHub</a></li>
+<br>
 </ul>
 </div>
 
@@ -119,7 +119,8 @@ plugins: RevealMarkdown, RevealHighlight, RevealMath.KaTeX, RevealMenu, RevealNo
 <li><a href="./documentation/">Documentation</a></li>
 
 <li style="list-style-type: none;">Wed 2023-05-17</li>
-<li><a href="./testing_ci">Testing &amp; CI</a></li>
+<li><a href="./testing">Testing</a></li>
+<li><a href="./ci">Continuous Integration</a></li>
 <li><a href="./wrap_up/">Wrap Up</a></li>
 </ul>
 </div>
@@ -141,8 +142,10 @@ plugins: RevealMarkdown, RevealHighlight, RevealMath.KaTeX, RevealMenu, RevealNo
     <script src="reveal.js/4.3.1/reveal.js/plugin/markdown/markdown.js"></script>
     <script src="reveal.js/4.3.1/reveal.js/plugin/highlight/highlight.js"></script>
     <script src="reveal.js/4.3.1/reveal.js-plugins/menu/menu.js"></script>
+    <script src="reveal.js/4.3.1/reveal.js-plugins/chalkboard/plugin.js"></script>
     <!-- Font awesome -->
     <link rel="stylesheet" href="reveal.js/4.3.1/reveal.js-plugins/menu/font-awesome/css/fontawesome.css">
+    <link rel="stylesheet" href="reveal.js/4.3.1/reveal.js-plugins/chalkboard/style.css">
 
     <script>
       // More info https://github.com/hakimel/reveal.js#configuration
@@ -163,7 +166,14 @@ plugins: RevealMarkdown, RevealHighlight, RevealMath.KaTeX, RevealMenu, RevealNo
         dependencies: [
           {src: 'reveal.js/4.3.1/reveal.js-plugins/reveal.js-d3/reveald3.js'}
         ],
-        plugins: [ RevealMarkdown, RevealHighlight, RevealMath.KaTeX, RevealMenu, RevealNotes, RevealSearch, RevealZoom ]
+        chalkboard: { // font-awesome.min.css must be available
+          //		src: "chalkboard/chalkboard.json",
+          storage: "chalkboard-demo",
+          toggleChalkboardButton: { left: "80px" },
+          toggleNotesButton: { left: "130px" },
+          readOnly: false,
+        },
+        plugins: [ RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, RevealMenu, RevealNotes, RevealSearch, RevealZoom ]
       });
     </script>
 

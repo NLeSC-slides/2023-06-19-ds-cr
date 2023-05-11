@@ -25,7 +25,9 @@
 <!-- .slide: data-state="standard 7" data-background="./files/seagull-ga3abb7684_1920.jpg" data-auto-animate -->
 ## Making of a Conflict
 
-<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="1-12|14-16|18-23|25-32">
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="1|3-7|9-14|16-18|20-25|27-28|30-37|39-42|44-55">
+$ git config pull.rebase false  # set git to "merge" changes
+
 $ git pull
 $ cat mars.txt
 Cold and dry, but everything is my favorite color
@@ -48,7 +50,10 @@ cat mars.txt
 Cold and dry, but everything is my favorite color
 The two moons may be a problem for Wolfman
 But the Mummy will appreciate the lack of humidity
-This line is edited locally my Wolfman
+This line is edited locally by Wolfman
+
+$ git add mars.txt
+$ git commit -m "edit line locally"
 
 [Edit the same file with the GitHub Web IDE]
 
@@ -58,6 +63,11 @@ But the Mummy will appreciate the lack of humidity
 This line is edited on remote by Dracula
 
 [Only for this hands-on: commit to 'main' branch]
+
+$ git pull
+Auto-merging mars.txt
+CONFLICT (content): Merge conflict in mars.txt
+Automatic merge failed; fix conflicts and then commit the result.
 
 $ cat mars.txt
 Cold and dry, but everything is my favorite color
@@ -77,7 +87,9 @@ This line is edited on remote by Dracula
 <!-- .slide: data-state="standard 7" data-background="./files/seagull-ga3abb7684_1920.jpg" data-auto-animate -->
 ## Making of a Conflict
 
-<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="tap" data-line-numbers="34-50">
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="44-55">
+$ git config pull.rebase false  # set git to "merge" changes
+
 $ git pull
 $ cat mars.txt
 Cold and dry, but everything is my favorite color
@@ -100,59 +112,10 @@ cat mars.txt
 Cold and dry, but everything is my favorite color
 The two moons may be a problem for Wolfman
 But the Mummy will appreciate the lack of humidity
-This line is edited locally my Wolfman
-
-[Edit the same file with the GitHub Web IDE]
-
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-This line is edited on remote by Dracula
-
-[Only for this hands-on: commit to 'main' branch]
-
-$ cat mars.txt
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 This line is edited locally by Wolfman
-||||||| c500f36
-This line is new
-=======
-This line is edited on remote by Dracula
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; e7c6d3cb58004414
-</code></pre>
 
----
-
-<!-- .slide: data-state="standard 7" data-background="./files/seagull-ga3abb7684_1920.jpg" data-auto-animate -->
-## Making of a Conflict
-
-<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="tap" data-line-numbers="34-50">
-$ git pull
-$ cat mars.txt
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-
-$ code mars.txt
-cat mars.txt
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-This line is new
-
-$ git add .
-$ git commit -m "add line"
-$ git push
-
-$ code mars.txt
-cat mars.txt
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-This line is edited locally my Wolfman
+$ git add mars.txt
+$ git commit -m "edit line locally"
 
 [Edit the same file with the GitHub Web IDE]
 
@@ -162,6 +125,11 @@ But the Mummy will appreciate the lack of humidity
 This line is edited on remote by Dracula
 
 [Only for this hands-on: commit to 'main' branch]
+
+$ git pull
+Auto-merging mars.txt
+CONFLICT (content): Merge conflict in mars.txt
+Automatic merge failed; fix conflicts and then commit the result.
 
 $ cat mars.txt
 Cold and dry, but everything is my favorite color
@@ -173,7 +141,7 @@ This line is edited locally by Wolfman
 This line is new
 =======
 This line is edited on remote by Dracula
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; e7c6d3cb58004414
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; e7c6d3cb58004414f4800c26d82b629259a9b6b4
 </code></pre>
 
 ---
@@ -181,7 +149,9 @@ This line is edited on remote by Dracula
 <!-- .slide: data-state="standard 7" data-background="./files/seagull-ga3abb7684_1920.jpg" data-auto-animate -->
 ## Making of a Conflict
 
-<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="tap" data-line-numbers="34-50">
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="44-55">
+$ git config pull.rebase false  # set git to "merge" changes
+
 $ git pull
 $ cat mars.txt
 Cold and dry, but everything is my favorite color
@@ -204,7 +174,10 @@ cat mars.txt
 Cold and dry, but everything is my favorite color
 The two moons may be a problem for Wolfman
 But the Mummy will appreciate the lack of humidity
-This line is edited locally my Wolfman
+This line is edited locally by Wolfman
+
+$ git add mars.txt
+$ git commit -m "edit line locally"
 
 [Edit the same file with the GitHub Web IDE]
 
@@ -214,6 +187,11 @@ But the Mummy will appreciate the lack of humidity
 This line is edited on remote by Dracula
 
 [Only for this hands-on: commit to 'main' branch]
+
+$ git pull
+Auto-merging mars.txt
+CONFLICT (content): Merge conflict in mars.txt
+Automatic merge failed; fix conflicts and then commit the result.
 
 $ cat mars.txt
 Cold and dry, but everything is my favorite color
@@ -225,15 +203,18 @@ This line is edited locally by Wolfman
 This line is new
 =======
 This line is edited on remote by Dracula
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; e7c6d3cb58004414
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; e7c6d3cb58004414f4800c26d82b629259a9b6b4
 </code></pre>
+
 
 ---
 
 <!-- .slide: data-state="standard 7" data-background="./files/seagull-ga3abb7684_1920.jpg" data-auto-animate -->
 ## Making of a Conflict
 
-<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="tap" data-line-numbers="34-50">
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="44-55">
+$ git config pull.rebase false  # set git to "merge" changes
+
 $ git pull
 $ cat mars.txt
 Cold and dry, but everything is my favorite color
@@ -256,7 +237,10 @@ cat mars.txt
 Cold and dry, but everything is my favorite color
 The two moons may be a problem for Wolfman
 But the Mummy will appreciate the lack of humidity
-This line is edited locally my Wolfman
+This line is edited locally by Wolfman
+
+$ git add mars.txt
+$ git commit -m "edit line locally"
 
 [Edit the same file with the GitHub Web IDE]
 
@@ -266,6 +250,11 @@ But the Mummy will appreciate the lack of humidity
 This line is edited on remote by Dracula
 
 [Only for this hands-on: commit to 'main' branch]
+
+$ git pull
+Auto-merging mars.txt
+CONFLICT (content): Merge conflict in mars.txt
+Automatic merge failed; fix conflicts and then commit the result.
 
 $ cat mars.txt
 Cold and dry, but everything is my favorite color
@@ -280,12 +269,15 @@ This line is edited on remote by Dracula
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; e7c6d3cb58004414
 </code></pre>
 
+
 ---
 
 <!-- .slide: data-state="standard 7" data-background="./files/seagull-ga3abb7684_1920.jpg" data-auto-animate -->
 ## Making of a Conflict
 
-<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="tap" data-line-numbers="34-50">
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="44-55">
+$ git config pull.rebase false  # set git to "merge" changes
+
 $ git pull
 $ cat mars.txt
 Cold and dry, but everything is my favorite color
@@ -308,7 +300,10 @@ cat mars.txt
 Cold and dry, but everything is my favorite color
 The two moons may be a problem for Wolfman
 But the Mummy will appreciate the lack of humidity
-This line is edited locally my Wolfman
+This line is edited locally by Wolfman
+
+$ git add mars.txt
+$ git commit -m "edit line locally"
 
 [Edit the same file with the GitHub Web IDE]
 
@@ -318,6 +313,11 @@ But the Mummy will appreciate the lack of humidity
 This line is edited on remote by Dracula
 
 [Only for this hands-on: commit to 'main' branch]
+
+$ git pull
+Auto-merging mars.txt
+CONFLICT (content): Merge conflict in mars.txt
+Automatic merge failed; fix conflicts and then commit the result.
 
 $ cat mars.txt
 Cold and dry, but everything is my favorite color

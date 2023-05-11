@@ -4,6 +4,11 @@
 
 What is version control and why should I use it?
 
+Note:
+- Git all set up?
+- SSH working?
+- Otherwise: breakout room
+
 ---
 
 <!-- .slide: data-state="black_overlay logo yellow_flag" data-background="./files/book-wall-g2e1ec5a05_1920.jpg" -->

@@ -461,7 +461,7 @@ $ cat venus.txt
 # Append "Venus is too hot for a base" to venus.txt
 # Commit the _previously staged_ venus.txt
 # Revert local changes of venus.txt, and finally print
-Venus is beautiful and full of love
+Venus is beautiful
 </code></pre>
 </code></pre>
 <span data-id="wolf1" style="font-style: normal;">🐺</span>
