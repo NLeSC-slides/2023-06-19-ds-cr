@@ -200,7 +200,7 @@ def x(a, print_columns=False):
 + A descriptive project title
 + Motivation (why the project exists) and basics
 + Installation / How to setup
-+ Copy-pastable quick start code example
++ Copy-pasteable quick start code example
 + Usage reference (if not elsewhere)
 + Recommended citation if someone uses it
 + Other related tools ("see also")
@@ -246,7 +246,7 @@ _Let's create documentation four our projects with Sphinx_
 
 + What questions do you still have?
 + Whether there are any incremental improvements that can benefit your projects?
-+What is nice that we learnt but is overkill for your current work?
++ What is nice that we learnt but is overkill for your current work?
 
 ---
 
