@@ -200,7 +200,7 @@ def x(a, print_columns=False):
 + A descriptive project title
 + Motivation (why the project exists) and basics
 + Installation / How to setup
-+ Copy-pastable quick start code example
++ Copy-pasteable quick start code example
 + Usage reference (if not elsewhere)
 + Recommended citation if someone uses it
 + Other related tools ("see also")
