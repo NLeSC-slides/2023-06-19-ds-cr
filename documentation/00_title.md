@@ -61,7 +61,7 @@ Respond with emojis 👍 🙀 to your colleagues' answers.
 + Think of projects of which you like the documentation. What do you like about them?
 + Think of projects for which you don't like the documentation. What don't you like about them? Are you missing anything?
 
-> NB: You can choose a mature library with lots of users for this exercise, but try to also think of less mature projects you had to collaborate on, or papers you had to reproduce.
+<quotation>NB: You can choose a mature library with lots of users for this exercise, but try to also think of less mature projects you had to collaborate on, or papers you had to reproduce.</quotation>
 
 ---
 
@@ -123,18 +123,16 @@ Do not use comments for:
 #     print('It is warm')
 </code></pre>
 
----
-
-<!-- .slide: data-state="standard" -->
-
-Do not use comments for:
-
-+ Replacing git
-<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="python">
+<div class="fragment">
+<ul>
+  <li>Replacing git</li>
+</ul>
+<pre style="width: max-content;" data-id="code-animation"><code style="overflow: hidden;" data-trim class="python">
 # removed on August 5
 # if() ...
 # Now it connects to the API with o-auth2, updated 05/05/2016
 </code></pre>
+</div>
 
 ---
 
@@ -142,7 +140,7 @@ Do not use comments for:
 
 _Let's write some docstrings in python_
 
->Code along
+>💻 Code along
 
 ---
 
@@ -168,6 +166,12 @@ def x(a, print_columns=False):
 <!-- .slide: data-state="standard" -->
 
 ## Keypoints Episode 2
+
+<style>
+blockquote {
+  width: 80% !important;
+}
+</style>
 
 > Giving explicit, descriptive names to your code segments (functions, classes, variables) already provides very useful and important documentation. In practice you will find that for simple functions it is unnecessary to add a docstring when the function name and variable names already give enough information.
 
@@ -236,7 +240,7 @@ Think about the user (which can be a future you) of your project.
 
 _Let's create documentation four our projects with Sphinx_
 
->Code along
+>💻 Code along
 
 ===
 
