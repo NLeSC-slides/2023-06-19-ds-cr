@@ -211,151 +211,67 @@ def fahrenheit_to_celsius(temp_f):
 
 ===
 
-
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
-
-
-===
-
-
-
-<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
-
 
 ## How do we make code more modular?
 
-- Identify areas for improvement
-
-
----
-
-<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
-
-## Identify processes and functions
-
-- Readability: a "code smell"
-- Nestedness
-
+Focus on readability
+- Code is read more than it is written
+- Bad readability can be a "code smell"
 
 ---
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
-### Create modules
-Create functions, classes, or even full packages for processes and functions identified in step 1. Move existing code into this structure.
+## How do we make code more modular?
 
----
-
-<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
-
-### Refactor
-Refactor the code in each module to make it as self-contained as possible. For example, remove dependencies on external code or data where possible.
-Clearly define the task that a module should do, and edit away any other functionality.
-
----
-
-<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
-
-### Test
-Test each module individually to ensure no errors or bugs are creeping in.
-Use tests also to again look critically at the function that should be performed by a module.
-
-===
-
-<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
-
-## Do One Thing (and do it well)
-- One _function_ for one purpose
-- One _class_ for one purpose
-- One _package_ for one purpose
-
-===
-
-<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
-
-## Don't Repeat Yourself
+Don't Repeat Yourself
 
 - Write routines (i.e. code that gets reused) into functions
-- Identify potential functions by _action_: functions perform tasks (e.g. sorting, plotting, saving a file, transform data...)
+- Identify potential functions by _action_
+    - functions _perform tasks_ (e.g. sorting, plotting, saving a file, transform data...)
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
+
+## How do we make code more modular?
+
+Remove nestedness
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
+
+## How do we make code more modular?
+
+Refactor based on functionality
+- Identify processes and functions
+- Define a structure for these processes/functions
+- Move existing code into this structure
+- Clearly define task for a module, edit away other functionality
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
+
+## How do we make code more modular?
+
+Use tests to
+- Write tests for each individual module
+- Use the test-writing procedure to look critically at the module's function
 
 
 ---
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
-## Functions are...
-- Functions are smaller code units reponsible of one task.
-- Functions are meant to be reused
-- Functions accept arguments (though they may also be empty!)
-- Functions generate output
+## How do we make code more modular?
 
----
-
-
----
-
-<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
-
-
-## When to make functions?
-
-Always.
-
----
-
-<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
-
-## When to make more functions?
-- if you have too many levels of indentation
-- if a function gets too long
-- if a function does more than one thing
-- if you find it hard to name a function
-
----
-
-<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
-
-
-
----
-
-<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
-
-## Pure functions are easier to
-
-- Test
-- Understand
-- Reuse
-- Parallelize
-- Simplify
-- Optimize
-- Compose
-
----
-
-<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
-
-## Divide and conquer
-
-- Split the code up
-- Construct your program from parts:
-  - functions
-  - modules
-  - packages (Python) or libraries (C or or C++ or Fortran)
-
----
-
-<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
-
-## Keep it simple
-
-- Avoid using complex data structures or algorithms
-- Instead, try to use simple, built-in data types and functions whenever possible.
-- Use clear and consistent indentation and naming conventions
-- Use descriptive and meaningful names for your variables, functions, and other code elements.
-- Avoid using global variables whenever possible
-- Instead, use local variables and functions to isolate and manage your data.
-- Avoid using complex or nested control flow statements
-- Instead, try to break your code down into smaller, simpler pieces that can be handled separately.
-
+Rewrite if...
+- you have too many levels of indentation
+- a function gets too long
+- a function does more than one thing
+- you find it hard to name a function
+- ...
 
