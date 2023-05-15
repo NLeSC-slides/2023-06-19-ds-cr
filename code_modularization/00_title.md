@@ -14,41 +14,70 @@ plugins: RevealMarkdown, RevealHighlight, RevealMath.KaTeX, RevealMenu, RevealNo
 [Barbara Vreede](mailto:b.vreede@esciencecenter.nl) |  [Ole Mussmann](mailto:o.mussmann@esciencecenter.nl)
 
 
+
 ===
 
-<!-- .slide: data-state="standard" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
-# 04. Modular code
+## What is modularity?
+- A way to organize and structure code
+<!-- .element: class="fragment" data-fragment-index="2" -->
+- Software is 'built up' from smaller elements
+<!-- .element: class="fragment" data-fragment-index="3" -->
+- Each element handles a specific (set of) task(s)
+<!-- .element: class="fragment" data-fragment-index="4" -->
+- Elements are self-contained and independent
+<!-- .element: class="fragment" data-fragment-index="5" -->
+
+Build **complex behavior** from **simple components**
+<!-- .element: class="fragment" data-fragment-index="6" -->
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png" -->
+
+## Modular code
 
 
 <img width="900" alt="think in building blocks" src="https://user-images.githubusercontent.com/5747405/207459058-59c88b4c-1401-428f-b28a-0ac3e72bd964.png">
 
----
-
-<!-- .slide: data-state="standard" -->
-
-## What is modularity?
-- It is a way to organize and structure code
-- Software is 'built up' from smaller elements
-- Each element handles a specific (set of) task(s)
-- Elements are self-contained and independent
-
-Eventually, we want to build **complex behavior** from **simple components**
-
-Modularity does not imply simplicity, but is enabled by it
-
 ===
 
-<!-- .slide: data-state="standard" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 ## Why do we want code to be modular?
+
+- Maintenance
+- Reusability
+- Robustness
+- Scalability
+- Innovation
+- Flexibility
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png" -->
+
+## What are blocks?
+
+- functions
+- functions
+- classes
+- modules
+- libraries/packages
+- programs
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
+
 ### Maintenance
 Modular code is easier to read, understand, and therefore to maintain.
 An independent module can be debugged, changed, or optimized, without it being necessary to understanding the rest of the codebase.
 
 ---
 
-<!-- .slide: data-state="standard" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 ### Reusability
 An independent module can live outside the context it was written for.
@@ -56,7 +85,7 @@ It can be reused by another project, and serve a purpose in a different environm
 
 ---
 
-<!-- .slide: data-state="standard" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 ### Robustness
 Modules are prime targets for tests.
@@ -64,15 +93,15 @@ A well defined module is easier to test, and therefore easier to debug or keep b
 
 ---
 
-<!-- .slide: data-state="standard" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 ### Scalability
 Modular code keeps the complexity of a project low by design.
-This makes it easier to scale up without creating huge issues. 
+This makes it easier to scale up without creating huge issues.
 
 ---
 
-<!-- .slide: data-state="standard" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 ### Innovation
 Modules increase the capabilities and power of a project, without increasing the complexity on a maintenance level.
@@ -80,7 +109,7 @@ Rearranging old modules can lead to powerful new applications.
 
 ---
 
-<!-- .slide: data-state="standard" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 ### Flexibility
 With code existing of independent modules, with low or absent interdependency, the codebase becomes flexible and amenable to change.
@@ -88,30 +117,34 @@ Modifications can be made in a targeted way, without unexpected (disastrous) con
 
 ===
 
-<!-- .slide: data-state="standard" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 
 ## How do we make code more modular?
 
-This process can be done iteratively: modules are built up of smaller modules, which are built up of... etc.
+- Identify areas for improvement
+
 
 ---
 
-<!-- .slide: data-state="standard" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
-### Identify processes and functions
-Break the project down into sub-steps and sub-tasks.
+## Identify processes and functions
+
+- Readability: a "code smell"
+- Nestedness
+
 
 ---
 
-<!-- .slide: data-state="standard" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 ### Create modules
 Create functions, classes, or even full packages for processes and functions identified in step 1. Move existing code into this structure.
 
 ---
 
-<!-- .slide: data-state="standard" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 ### Refactor
 Refactor the code in each module to make it as self-contained as possible. For example, remove dependencies on external code or data where possible.
@@ -119,7 +152,7 @@ Clearly define the task that a module should do, and edit away any other functio
 
 ---
 
-<!-- .slide: data-state="standard" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 ### Test
 Test each module individually to ensure no errors or bugs are creeping in.
@@ -127,7 +160,7 @@ Use tests also to again look critically at the function that should be performed
 
 ===
 
-<!-- .slide: data-state="standard" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 ## Do One Thing (and do it well)
 - One _function_ for one purpose
@@ -136,7 +169,7 @@ Use tests also to again look critically at the function that should be performed
 
 ===
 
-<!-- .slide: data-state="standard" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 ## Don't Repeat Yourself
 
@@ -146,7 +179,7 @@ Use tests also to again look critically at the function that should be performed
 
 ---
 
-<!-- .slide: data-state="standard" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 ## Functions are...
 - Functions are smaller code units reponsible of one task.
@@ -156,7 +189,7 @@ Use tests also to again look critically at the function that should be performed
 
 ---
 
-<!-- .slide: data-state="standard" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 ## Functions do not...
 
@@ -172,13 +205,13 @@ indexAAG = [n for n,i in enumerate(myList) if i == 'AAG']
 def indexString(inputList,z):
     zIndex = [n for n,i in enumerate(li) if i == z]
     return zIndex
-    
+
 indexATG = indexString(myList,'ATG')
 indexAAG = indexString(myList,'AAG')
 ```
 ---
 
-<!-- .slide: data-state="standard" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 
 ## When to make functions?
@@ -187,7 +220,7 @@ Always.
 
 ---
 
-<!-- .slide: data-state="standard" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 ## When to make more functions?
 - if you have too many levels of indentation
@@ -197,7 +230,7 @@ Always.
 
 ---
 
-<!-- .slide: data-state="standard" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 ## Keep your functions pure
 
@@ -227,7 +260,7 @@ def fahrenheit_to_celsius_bad(temp_f):
 
 ---
 
-<!-- .slide: data-state="standard" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 ## Pure functions are easier to
 
@@ -241,7 +274,7 @@ def fahrenheit_to_celsius_bad(temp_f):
 
 ---
 
-<!-- .slide: data-state="standard" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 ## Divide and conquer
 
@@ -253,7 +286,7 @@ def fahrenheit_to_celsius_bad(temp_f):
 
 ---
 
-<!-- .slide: data-state="standard" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 ## Keep it simple
 
