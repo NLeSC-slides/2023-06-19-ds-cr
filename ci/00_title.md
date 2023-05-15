@@ -25,8 +25,71 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 ===
 
 <!-- .slide: data-state="standard" -->
-## Slide 2
-- new column
+
+<style>
+
+/* Blockquote main style */
+.blockquote {
+    position: relative;
+    font-weight: 800;
+    padding: 30px 0;
+    width: 100%;
+    max-width: 500px;
+    z-index: 1;
+    margin: 80px auto;
+    align-self: center;
+    border-top: solid 1px;
+    border-bottom: solid 1px;
+}
+
+/* Blockquote header */
+.blockquote h1 {
+    position: relative;
+    font-size: small;
+    font-weight: 800;
+    line-height: 1;
+    margin: 0;
+}
+
+/* Blockquote right double quotes */
+.blockquote:after {
+    position: absolute;
+    content: "”";
+    font-size: 10rem;
+    line-height: 0;
+    bottom: -43px;
+    right: 30px;
+}
+
+/* increase header size after 600px */
+@media all and (min-width: 600px) {
+    .blockquote h1 {
+        font-size: 60px;
+   }
+
+}
+
+/* Blockquote subheader */
+.blockquote h4 {
+    position: relative;
+    font-size: 1.4rem;
+    font-weight: normal;
+    line-height: 1;
+    margin: 0;
+    padding-top: 20px;
+    z-index: 1;
+}
+
+</style>
+
+## Continuous _What_ Now...?
+
+<div class="blockquote-wrapper fragment">
+  <div class="blockquote">
+      Automating the integration of code changes from multiple contributors into a single software project.
+    <h4>&mdash; <a href="atlassian.com/continuous-delivery/continuous-integration">Atlassian</a></h4>
+  </div>
+</div>
 
 ---
 
