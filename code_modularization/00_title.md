@@ -57,42 +57,76 @@ plugins: RevealMarkdown, RevealHighlight, RevealMath.KaTeX, RevealMenu, RevealNo
 
 ## Why write modular code?
 
-- Maintenance
-<!-- .element: class="fragment" data-fragment-index="2" -->
-- Reusability
-<!-- .element: class="fragment" data-fragment-index="3" -->
-- Robustness
-<!-- .element: class="fragment" data-fragment-index="4" -->
-- Scalability
-<!-- .element: class="fragment" data-fragment-index="5" -->
-- Innovation
-<!-- .element: class="fragment" data-fragment-index="6" -->
-- Flexibility
-<!-- .element: class="fragment" data-fragment-index="7" -->
-- ...
-<!-- .element: class="fragment" data-fragment-index="8" -->
+To increase robustness:
+
+<img width="200" alt="testing a single module" src="./files/testing_module.png">
+
+- A well-designed module can be tested.
+- This helps keep the codebase well-functioning and bug-free.
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
+
+## Why write modular code?
+
+To make maintenance easier:
+
+<img width="300" alt="testing a module taken from a larger project" src="./files/testing_module_maintenance.png">
+
+- Modular code is more readable and understandable.
+- Modules can be debugged separately.
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
+
+## Why write modular code?
+
+To allow reusability:
+
+<img width="400" alt="reuse a module in another project" src="./files/reuse_module.png">
+
+- A module can live independent of its original context
+- It can be reused by another project
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
+
+## Why write modular code?
+
+To facilitate scalability:
+
+<img height="300" alt="scalability" src="./files/scalability.png">
 
 
-Note:
-- Maintenance
-  - Modular code is easier to read, understand, and therefore to maintain.
-  - An independent module can be debugged, changed, or optimized, without it being necessary to understanding the rest of the codebase.
-- Reusability
-  - An independent module can live outside the context it was written for.
-  - It can be reused by another project, and serve a purpose in a different environment.
-- Robustness
-  - Modules are prime targets for tests.
-  - A well defined module is easier to test, and therefore easier to debug or keep bug-free.
-- Scalability
-  - Modular code keeps the complexity of a project low by design.
-  - This makes it easier to scale up without creating huge issues.
-- Innovation
-  - Modules increase the capabilities and power of a project, without increasing the complexity on a maintenance level.
-  - Rearranging old modules can lead to powerful new applications.
-- Flexibility
-  - With code existing of independent modules, with low or absent interdependency, the codebase becomes flexible and amenable to change.
-  - Modifications can be made in a targeted way, without unexpected (disastrous) consequences.
+<div>
 
+- Complexity remains low by design
+- This creates space for scaling up
+
+</div>
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
+
+## Why write modular code?
+
+To create opportunities for innovation:
+
+<img height="300" alt="tetris shows innovation" src="./files/tetris_innovation.png">
+
+- Modules increase the capabilities and power of a project
+- Rearrange old modules for new applications
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
+
+
+<img height="500" alt="modularity meme" src="./files/modularity_meme.png">
 
 ---
 
@@ -191,17 +225,16 @@ def fahrenheit_to_celsius(temp_f):
 
 ## A stateful function
 
-changes their environment:
+changes its environment:
 
 ```python=
-f_to_c_offset = 32.0
-f_to_c_factor = 0.555555555
-temp_c = 0.0
-
 def fahrenheit_to_celsius(temp_f):
     global temp_c
     temp_c = (temp_f - f_to_c_offset) * f_to_c_factor
 
+>>> f_to_c_offset = 32.0
+>>> f_to_c_factor = (5.0/9.0)
+>>> temp_c = 0.0
 >>> print(temp_c)
 0.0
 >>> fahrenheit_to_celsius(temp_f=77.0)
@@ -213,65 +246,85 @@ def fahrenheit_to_celsius(temp_f):
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
-## How do we make code more modular?
+## Focus on readability
 
-Focus on readability
+- Modular code becomes more readable
 - Code is read more than it is written
+- Does a reader understand what the code does?
 - Bad readability can be a "code smell"
 
 ---
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
-## How do we make code more modular?
+## Identify future functions
 
-Don't Repeat Yourself
-
-- Write routines (i.e. code that gets reused) into functions
-- Identify potential functions by _action_
-    - functions _perform tasks_ (e.g. sorting, plotting, saving a file, transform data...)
+- Don't Repeat Yourself (DRY): place reused code into a function
+- Identify potential functions by their _action_
+    (e.g. "plotting", "transforming", "extracting", "saving")
 
 ---
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
-## How do we make code more modular?
+## Target nested code
 
-Remove nestedness
+Nested code is a prime target for modularization:
+
+```python=
+def checkTemperature(degrees):
+    if degrees < 0:
+        if degrees < -273:
+            if degrees < -459:
+                print("This temperature is impossible.")
+            else:
+                print("This temperature is likely Fahrenheit.")
+        else:
+            print("This temperature is either Celsius or Fahrenheit.")
+    else:
+        print("This temperature is in Kelvin, Celsius, or Fahrhenheit.")
+```
 
 ---
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
-## How do we make code more modular?
+## Reduce nestedness
 
-Refactor based on functionality
-- Identify processes and functions
-- Define a structure for these processes/functions
-- Move existing code into this structure
-- Clearly define task for a module, edit away other functionality
+by extracting modules:
+
+```python=
+def validTemp(degrees):
+    if degrees < -459:
+        return FALSE
+    return TRUE
+
+def checkTemperature(degrees):
+    if not validTemp(degrees):
+        return "invalid temperature"
+    if degrees < 0:
+        if degrees < -273:
+            print("This temperature is likely Fahrenheit.")
+        else:
+            print("This temperature is either Celsius or Fahrenheit.")
+    else:
+        print("This temperature is in Kelvin, Celsius, or Fahrhenheit.")
+```
 
 ---
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
-## How do we make code more modular?
+## Let tests help you
 
-Use tests to
 - Write tests for each individual module
-- Use the test-writing procedure to look critically at the module's function
+- Use the test-writing procedure to look critically at the module's function:
+    - Is the input/output clear?
+    - What can you not yet test? Extract it into a new module.
 
 
----
+===
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
-## How do we make code more modular?
-
-Rewrite if...
-- you have too many levels of indentation
-- a function gets too long
-- a function does more than one thing
-- you find it hard to name a function
-- ...
-
+![](https://imgs.xkcd.com/comics/code_lifespan_2x.png)
