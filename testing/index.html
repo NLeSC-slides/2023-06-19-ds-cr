@@ -140,7 +140,7 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 
 ## Why Not Test?
 
-<div class="r-stack">
+<div class="r-stack fragment">
   <img style="height: 30vh;" src="./files/dev_speed_time_2.svg">
   <img class="fragment" style="height: 30vh;" src="./files/dev_speed_time_1.svg">
 </div>
@@ -212,11 +212,14 @@ def test_add():  # Special name!
 </div>
 
 <div class="fragment">
+Chat with the python shell about <code>assert</code> ...
+</div>
+<div class="fragment">
 <pre data-id="code-animation"><code class="python" style="overflow: hidden;" data-trim class="bash" data-line-numbers>
 >>> assert 1==1  # passes
 >>> assert 1==2  # throws error
 Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
 AssertionError
 </code></pre>
 
@@ -262,7 +265,7 @@ def test_add():
 
 ## Testing Again
 
-<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="1|2-9|10-17|18-20">
+<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="bash" data-line-numbers="1|2-8|9-17|18-20">
 $ pytest example.py
 ======================== test session starts =========================
 platform linux -- Python 3.6.9, pytest-7.0.1, pluggy-1.0.0
