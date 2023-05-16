@@ -288,6 +288,11 @@ FAILED example.py::test_add - assert -1 == 5
 ========================= 1 failed in 0.05s ==========================
 </code></pre>
 
+<ul>
+  <li class="fragment">🚀❓<span class="fragment">Functions fail on first error</span></li>
+  <li class="fragment">But all test functions are executed</li>
+</ul>
+
 ---
 
 <!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/Python_logo_icon.png" data-background-size="50%" -->
@@ -405,14 +410,14 @@ print(nums)            # [1, 2, 3] 😬</span>
 
 ===
 
-<!-- .slide: data-state="purple_overlay 6 logo yellow_flag" data-background="./files/box-write-in-it-5279529_1280.jpg" -->
+<!-- .slide: data-state="white_overlay 4 logo yellow_flag" data-background="./files/box-write-in-it-5279529_1280.jpg" -->
 <!-- Image by <a href="https://pixabay.com/users/hollanddesign-15443332/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5279529">Simone Holland</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5279529">Pixabay</a> -->
 
 # Test Design
 
 ---
 
-<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/box-write-in-it-5279529_1280.jpg" -->
+<!-- .slide: data-state="white_overlay logo yellow_flag" data-background="./files/box-write-in-it-5279529_1280.jpg" -->
 
 
 ## Test for Weird Things
@@ -427,7 +432,7 @@ def test_func():
     assert "oopsie daisy 🌼" in str(err.value)
 </code></pre>
 
-<pre style="width: 50%;" data-id="code-animation"><code class="python" style="overflow: hidden;" data-trim data-noescape class="bash" data-line-numbers=>
+<pre class="fragment" style="width: 50%;" data-id="code-animation"><code class="python" style="overflow: hidden;" data-trim data-noescape class="bash" data-line-numbers=>
 def test_func():
     # Test with files
     _, tmp_file = tempfile.mkstemp()
@@ -437,7 +442,7 @@ def test_func():
     os.remove(tmp_file)
 </code></pre>
 
-<pre style="width: 50%;" data-id="code-animation"><code class="python" style="overflow: hidden;" data-trim data-noescape class="bash" data-line-numbers=>
+<pre class="fragment" style="width: 50%;" data-id="code-animation"><code class="python" style="overflow: hidden;" data-trim data-noescape class="bash" data-line-numbers=>
 def func():
     # my_module.py: var = 5
     from my_module import var
@@ -452,7 +457,7 @@ def test_func(monkeypatch):  # ⬅️🐵⚠️
 
 ---
 
-<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/box-write-in-it-5279529_1280.jpg" -->
+<!-- .slide: data-state="white_overlay logo yellow_flag" data-background="./files/box-write-in-it-5279529_1280.jpg" -->
 
 ## Exercise
 <div style="font-size: xx-large; width: 49%; float: left;">
@@ -467,8 +472,7 @@ def test_func(monkeypatch):  # ⬅️🐵⚠️
 <pre style="width: 100%;" data-id="code-animation"><code class="python" style="overflow: hidden;" data-trim data-noescape class="bash" data-line-numbers=>
 # DESIGN 1️⃣
 def factorial(n):
-    """
-    Computes the factorial of n.
+    """Computes the factorial of n.
     """
     if n < 0:
         raise ValueError('received negative input')
@@ -481,8 +485,7 @@ def factorial(n):
 <pre style="width: 100%;" data-id="code-animation"><code class="python" style="overflow: hidden;" data-trim data-noescape class="bash" data-line-numbers=>
 # DESIGN 2️⃣
 def count_word_occurrence_in_string(text, word):
-    """
-    Counts how often word appears in text.
+    """Counts how often word appears in text.
     Example: if text is "one two one two three four"
              and word is "one", then this function
              returns 2
@@ -497,11 +500,9 @@ def count_word_occurrence_in_string(text, word):
 <pre style="width: 100%;" data-id="code-animation"><code class="python" style="overflow: hidden;" data-trim data-noescape class="bash" data-line-numbers=>
 # DESIGN 3️⃣
 def count_word_occurrence_in_file(file_name, word):
-    """
-    Counts how often word appears in file file_name.
-    Example: if file contains "one two one two three"
-             and word is "one", then this function
-             returns 2
+    """Counts how often word appears in file file_name.
+    Example: if file contains "one two one three" and
+             word is "one", then return 2
     """
     count = 0
     with open(file_name, 'r') as f:
@@ -513,8 +514,8 @@ def count_word_occurrence_in_file(file_name, word):
 
 <pre style="width: 100%;" data-id="code-animation"><code class="python" style="overflow: hidden;" data-trim data-noescape class="bash" data-line-numbers=>
 # DESIGN 4️⃣
-def check_reactor_temperature(temperature_celsius):       """
-    Checks whether temperature is above
+def check_reactor_temperature(temperature_celsius):
+    """Checks whether temperature is above
     max_temperature and returns a status.
     """
     from reactor import max_temperature
@@ -531,15 +532,14 @@ class Pet:
     def __init__(self, name):
         self.name = name
         self.hunger = 0
-    #   ⬇️ how would you test this function?
-    def go_for_a_walk(self):
+    def go_for_a_walk(self):  # ⬅️ test this function
         self.hunger += 1
 </code></pre>
 </div>
 
 ---
 
-<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/box-write-in-it-5279529_1280.jpg" -->
+<!-- .slide: data-state="white_overlay 9 logo yellow_flag" data-background="./files/box-write-in-it-5279529_1280.jpg" -->
 
 ## Take-away
 
@@ -550,6 +550,72 @@ class Pet:
 - Aim for a balance between unit- and integration tests ⚖️
 - Testing removes the dread of refactoring 🔁
 - Your future you will thank you 🙏
+
+===
+
+<!-- .slide: data-state="purple_overlay 4 logo yellow_flag" data-background="./files/car-5500794_1280.jpg" -->
+
+# Test-Driven Development
+
+<div style="height: 20vh;"></div>
+
+---
+
+<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/car-5500794_1280.jpg" data-auto-animate -->
+
+## FizzBuzz Function
+
+<div class="r-stack">
+  <img src="./files/fizz_buzz_1.svg">
+  <img class="fragment" data-fragment-index="1" src="./files/fizz_buzz_2.svg">
+  <img class="fragment" data-fragment-index="2" src="./files/fizz_buzz_3.svg">
+  <img class="fragment" data-fragment-index="3" src="./files/fizz_buzz_4.svg">
+  <img class="fragment" data-fragment-index="4" src="./files/fizz_buzz_5.svg">
+  <img class="fragment" data-fragment-index="5" src="./files/fizz_buzz_6.svg">
+</div>
+
+<ul>
+  <li>fizz_buzz() takes an integer argument and returns it, BUT</li>
+  <ul>
+    <li class="fragment" data-fragment-index="1">fails on zero or negative numbers</li>
+    <li class="fragment" data-fragment-index="2">instead returns "Fizz" on multiples of 3</li>
+    <li class="fragment" data-fragment-index="3">instead returns "Buzz" on multiples of 5</li>
+    <li class="fragment" data-fragment-index="5">instead returns "FizzBuzz" on multiples of 3 and 5</li>
+  </ul>
+</ul>
+
+---
+
+<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/car-5500794_1280.jpg" data-auto-animate -->
+
+## FizzBuzz Function
+
+<ul>
+  <li>fizz_buzz() takes an integer argument and returns it, BUT</li>
+  <ul>
+    <li>fails on zero or negative numbers</li>
+    <li>instead returns "Fizz" on multiples of 3</li>
+    <li>instead returns "Buzz" on multiples of 5</li>
+    <li>instead returns "FizzBuzz" on multiples of 3 and 5</li>
+  </ul>
+  <li class="fragment">Create an empty function fizz_buzz()</li>
+  <li class="fragment">Write the tests</li>
+  <li class="fragment">Paste your tests in the collab document, and discuss</li>
+  <li class="fragment">Now write a function code to make your tests pass</li>
+</ul>
+
+---
+
+<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/car-5500794_1280.jpg" -->
+
+## Take-away
+
+- What did you think of this style of development?
+- Was it easier or harder than just writing code?
+- Would your code look different without the tests? <!-- .element class="fragment" -->
+- For what kind of projects would it be useful? <!-- .element class="fragment" -->
+
+<div class="fragment" style="width: 20vw; margin: 1em auto;">Test-Driven Development (TDD) is an optional tool in your toolbox 🛠️</div>
 
 </section>
 
