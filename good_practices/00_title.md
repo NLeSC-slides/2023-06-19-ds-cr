@@ -8,12 +8,7 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 
 <!-- .slide: data-state="blue_overlay yellow_flag yellow_strip purple_half_circle_bottom purple_blob right_e_top" data-background-video="./files/Mood video Homepage 2.mp4" data-background-video-loop data-background-video-muted="true" -->
 
-<img style="width: 10vw;" src="./files/TUSAIL_logo.svg">
-
-# How to Write Good Code?
-## An Introduction
-
-[Ole Mussmann](mailto:o.mussmann@esciencecenter.nl)
+# Good Practices for Research Software Development
 
 ---
 
@@ -88,6 +83,12 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 
 Note:
 What's the difference between programming and software engineering?
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
+
+<img width="800" alt="development speed" src="./files/development-speed.svg">
 
 ---
 
@@ -197,3 +198,16 @@ Note:
 - Experience their effect
 - Use own judgement, but
 - avoid "but in my project..."
+
+===
+
+<!-- .slide: data-state="standard" data-background="./files/workspace-1280538_1280.jpg"-->
+
+## Good practices are investments
+
+Profits come in
+
+- Development efficiency
+- Robustness
+- Reproducibility
+- Lack of headaches!
