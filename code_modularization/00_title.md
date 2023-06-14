@@ -10,8 +10,6 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 
 # Developing Modular Code
 
-[Barbara Vreede](mailto:b.vreede@esciencecenter.nl) |  [Ole Mussmann](mailto:o.mussmann@esciencecenter.nl)
-
 ===
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
@@ -120,13 +118,6 @@ To create opportunities for innovation:
 
 - Modules increase the capabilities and power of a project
 - Rearrange old modules for new applications
-
----
-
-<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
-
-
-<img height="500" alt="modularity meme" src="./files/modularity_meme.png">
 
 ---
 
@@ -246,6 +237,12 @@ def fahrenheit_to_celsius(temp_f):
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
+## Identifying opportunities for modularization
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
+
 ## Focus on readability
 
 - Modular code becomes more readable
@@ -327,4 +324,5 @@ def checkTemperature(degrees):
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
-![](https://imgs.xkcd.com/comics/code_lifespan_2x.png)
+![]()
+<img height="700" alt="xkcd code lifespan" src="https://imgs.xkcd.com/comics/code_lifespan_2x.png">
