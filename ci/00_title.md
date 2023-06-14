@@ -10,7 +10,6 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 
 # Continuous Integration
 
-[Ole Mussmann](mailto:o.mussmann@esciencecenter.nl)
 
 ---
 
@@ -19,7 +18,6 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 # Continuous Integration
 <img src="./files/automate.jpg">
 
-[Ole Mussmann](mailto:o.mussmann@esciencecenter.nl)
 
 
 ===
@@ -115,6 +113,17 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 
 <!-- .slide: data-state="blue_overlay yellow_flag logo 9" data-background="./files/reload-97640.svg" data-background-size="50%" -->
 
+## Take-away
+
+- Best practices are a time-investment _with returns_
+- CI saves time and keeps your project clean
+- What improvements could your project benefit from?
+- What's nice to know, but overkill for your current work?
+
+---
+
+<!-- .slide: data-state="blue_overlay yellow_flag logo 9" data-background="./files/reload-97640.svg" data-background-size="50%" -->
+
 ## Hands-On
 
 <div style="float: left; width: 60%; margin-bottom: 1em;">
@@ -135,13 +144,3 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 
 <a href="https://coderefinery.github.io/testing/full-cycle-ci/">coderefinery.github.io/testing/full-cycle-ci/</a>
 
----
-
-<!-- .slide: data-state="blue_overlay yellow_flag logo 9" data-background="./files/reload-97640.svg" data-background-size="50%" -->
-
-## Take-away
-
-- Best practices are a time-investment _with returns_
-- CI saves time and keeps your project clean
-- What improvements could your project benefit from?
-- What's nice to know, but overkill for your current work?
