@@ -12,7 +12,7 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 
 <div>
 <ul>
-<li><a href="./good_practices">Intro to Good Practices</a></li>
+<li><a href="./good_practices">Good Practices</a></li>
 <li><a href="./git">Git</a></li>
 <li><a href="./git/#/collaborating">Collaboration with GitHub</a></li>
 <li><a href="./code_modularization">Modular Code Development</a></li>
