@@ -197,7 +197,7 @@ Think about the user (which can be a future you) of your project.
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
-## Episode 4: Sphinx documentation
+## User/API documentation
 
 + What if a README file is not enough?
 + How do I easily create user documentation?
@@ -209,8 +209,11 @@ Think about the user (which can be a future you) of your project.
 ## Tools
 
 + **Sphinx** (documentation generator)
-  - creates nicely-formatted HTML pages out of markdown or  files. It is programming language-independent.
-+ **Github pages** (deploy your documentation) easily connects to your github repository and automatically deploys your Sphinx documentation for free!
+  - creates nicely-formatted HTML pages out of .md or .rst files
+  - programming language independent
++ **Github pages** (deploy your documentation)
+  - set up inside your GitHub repository
+  - automatically deploys your Sphinx-generated documentation
 
 ===
 
@@ -223,4 +226,6 @@ Think about the user (which can be a future you) of your project.
   + Readable code
   + In-code comments
   + Docstrings
+  + README files
+  + Tutorials/notebooks
 + Depending on the purpose and state of the project documentation needs to meet different criteria.
