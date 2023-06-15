@@ -11,8 +11,6 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 
 # Testing
 
-[Ole Mussmann](mailto:o.mussmann@esciencecenter.nl)
-
 ===
 
 <!-- .slide: data-state="standard 4" data-background="./files/lab-gbbd4af2a9_1280.jpg" -->
@@ -110,7 +108,7 @@ $ cd pytest-example
 </code></pre>
 
 <div class="fragment">
-Creating a file <code>example.py</code> containing 
+Creating a file <code>example.py</code> containing
 <pre><code class="python" style="overflow: hidden;" data-trim class="bash" data-line-numbers>
 def add(a, b):
     return a + b
@@ -147,7 +145,7 @@ $ pytest example.py
 ======================== test session starts ========================
 platform linux -- Python 3.6.9, pytest-7.0.1, pluggy-1.0.0
 rootdir: /home/ole/Desktop/pytest-texample
-collected 1 item                                                         
+collected 1 item
 
 example.py .                                                  [100%]
 
@@ -181,7 +179,7 @@ $ pytest example.py
 ======================== test session starts =========================
 platform linux -- Python 3.6.9, pytest-7.0.1, pluggy-1.0.0
 rootdir: /home/ole/Desktop/pytest-texample
-collected 1 item                                                               
+collected 1 item
 
 example.py F                                                   [100%]
 
