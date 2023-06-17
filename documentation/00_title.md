@@ -80,6 +80,7 @@ vs
 def celsius_to_fahrenheit(degrees):
     return degrees * 4 / 9 + 32
 ```
+
 ---
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
