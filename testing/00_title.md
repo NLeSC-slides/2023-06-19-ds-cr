@@ -13,13 +13,13 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 
 ===
 
-<!-- .slide: data-state="standard 4" data-background="./files/lab-gbbd4af2a9_1280.jpg" -->
+<!-- .slide: data-state="standard 4" data-background="./files/whitebg.png" -->
 
 # Background
 
 ---
 
-<!-- .slide: data-state="standard" data-background="./files/lab-gbbd4af2a9_1280.jpg" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png" -->
 
 ## Why Test?
 
@@ -45,18 +45,7 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 
 ---
 
-<!-- .slide: data-state="standard" data-background="./files/lab-gbbd4af2a9_1280.jpg" -->
-
-## Why Not Test?
-
-<div class="r-stack fragment">
-  <img style="height: 30vh;" src="./files/dev_speed_time_2.svg">
-  <img class="fragment" style="height: 30vh;" src="./files/dev_speed_time_1.svg">
-</div>
-
----
-
-<!-- .slide: data-state="standard" data-background="./files/lab-gbbd4af2a9_1280.jpg" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png" -->
 
 ## Test Types
 
@@ -80,25 +69,27 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 
 ---
 
-<!-- .slide: data-state="standard" data-background="./files/lab-gbbd4af2a9_1280.jpg" -->
+## How much testing is enough?
 
-## Analyze Test Covorage
+Test metrics:
 
-[codecov.io](https://about.codecov.io/)
+- lines of code : lines of tests (target: 1:3)
+- test coverage [example](https://sonarcloud.io/component_measures?id=eWaterCycle_ewatercycle&metric=coverage&view=treemap&selected=eWaterCycle_ewatercycle%3Aewatercycle)
 
-<!-- Image by <a href="https://pixabay.com/users/hellbergstina-13347982/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5396788">hellbergstina</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5396788">Pixabay</a> -->
-
-<img class="fragment" style="height: 20vh;" src="./files/scale-ga51297104_640.png">
-
-===
-
-<!-- .slide: data-state="blue_overlay 6 logo yellow_flag" data-background="./files/Python_logo_icon.png" data-background-size="50%" -->
-
-# PyTest
 
 ---
 
-<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/Python_logo_icon.png" data-background-size="50%" -->
+<!-- .slide: data-state="blue_overlay 6 logo yellow_flag" data-background="./files/whitebg.png" data-background-size="50%" -->
+
+# PyTest
+
+- recommended python testing framework
+- [docs.pytest.org](https://docs.pytest.org/en/7.3.x/)
+
+![](.files/pytest_logo.svg)
+---
+
+<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/whitebg.png" data-background-size="50%" -->
 
 ## Write Code
 
@@ -136,7 +127,7 @@ AssertionError
 
 ---
 
-<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/Python_logo_icon.png" data-background-size="50%" -->
+<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/whitebg.png" data-background-size="50%" -->
 
 ## Test!
 
@@ -154,7 +145,7 @@ example.py .                                                  [100%]
 
 ---
 
-<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/Python_logo_icon.png" data-background-size="50%" -->
+<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/whitebg.png" -->
 
 ## Breaking Things
 
@@ -170,7 +161,7 @@ def test_add():
 
 ---
 
-<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/Python_logo_icon.png" data-background-size="50%" -->
+<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/whitebg.png" -->
 
 ## Testing Again
 
@@ -204,7 +195,7 @@ FAILED example.py::test_add - assert -1 == 5
 
 ---
 
-<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/Python_logo_icon.png" data-background-size="50%" -->
+<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/whitebg.png" -->
 
 ## Take-away
 

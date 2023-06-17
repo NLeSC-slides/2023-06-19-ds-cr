@@ -199,7 +199,7 @@ Note:
 - Use own judgement, but
 - avoid "but in my project..."
 
-===
+---
 
 <!-- .slide: data-state="standard" data-background="./files/workspace-1280538_1280.jpg"-->
 
@@ -208,6 +208,8 @@ Note:
 Profits come in
 
 - Development efficiency
-- Robustness
 - Reproducibility
-- Lack of headaches!
+- Reusability
+- Faster debugging
+- Robustness, fewer errors
+- Fewer headaches!
