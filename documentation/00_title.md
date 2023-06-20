@@ -14,7 +14,7 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
-<img style="height: 350px;" src="./files/paint.png"/>
+<img style="height: 550px;" src="./files/paint.png"/>
 
 ---
 
@@ -44,21 +44,19 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 
 ---
 
-<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
-
-## Note:
-
-+ Documentation needs to meet different criteria, depending on the purpose and state of the project.
-+ Documentation is a vital part of a project.
-
 ===
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 ## Why do we comment code?
 
-+ to make it more readable
-+
+<ul>
+  <li contenteditable="true">...</li>
+  <li contenteditable="true">...</li>
+  <li contenteditable="true">...</li>
+  <li contenteditable="true">...</li>
+
+</ul>
 ---
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
@@ -228,3 +226,12 @@ Think about the user (which can be a future you) of your project.
   + README files
   + Tutorials/notebooks
 + Depending on the purpose and state of the project documentation needs to meet different criteria.
+
+
+
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
+
+## Take-away
+
++ Documentation needs to meet different criteria, depending on the purpose and state of the project.
++ Documentation is a vital part of a project, and should be kept and created alongside the corresponding code.
