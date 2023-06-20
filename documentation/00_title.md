@@ -73,12 +73,12 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 ```python=
 # convert from degrees celsius to fahrenheit
 def convert(d):
-    return d * 4 / 9 + 32
+    return d * 5 / 9 + 32
 ```
 vs
 ```python=
 def celsius_to_fahrenheit(degrees):
-    return degrees * 4 / 9 + 32
+    return degrees * 5 / 9 + 32
 ```
 
 ---
@@ -140,7 +140,7 @@ Do not use comments for:
 ```python=
 def celsius_to_fahrenheit(degrees):
   """Convert degrees Celsius to degrees Fahrenheit."""
-  return degrees * 4 / 9 + 32
+  return degrees * 5 / 9 + 32
 ```
 
 Why is this OK?
