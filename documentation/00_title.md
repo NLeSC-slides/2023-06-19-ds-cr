@@ -10,11 +10,74 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 
 # Documentation
 
-===
+---
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 <img style="height: 550px;" src="./files/paint.png"/>
+
+---
+
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
+
+## Examples of documentation
+
++ Think of projects with good documentation.
+      What do you like about them?
++ Think of projects with less good documentation.
+      What don't you like about them? Are you missing anything?
+
+<quotation>NB: You can choose a mature library with lots of users, but try to also think of less mature projects you had to collaborate on, or papers you had to reproduce.</quotation>
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
+
+## Types of documentation
+
+<div class="fragment">
++ README files
++ In-code documentation
++ API documentation
++ Tutorials
++ ...
+</div>
+
+---
+
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
+
+## A good README file
+
++ README file is first thing a user/collaborator sees
++ What should be included as a bare minimum in README files?
+<ul>
+  <li contenteditable="true">...</li>
+  <li contenteditable="true">...</li>
+  <li contenteditable="true">...</li>
+  <li contenteditable="true">...</li>
+  <li contenteditable="true">...</li>
+  <li contenteditable="true">...</li>
+  <li contenteditable="true">...</li>
+</ul>
+
+
+Note:
++ A descriptive project title
++ Motivation (why the project exists) and basics
++ Installation / How to setup
++ Copy-pasteable quick start code example
++ Usage reference (if not elsewhere)
++ Recommended citation if someone uses it
++ Other related tools ("see also")
++ Contact information for the developer(s)
++ License information
++ Contributing guidelines
+
+---
 
 ---
 
