@@ -33,10 +33,12 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
-## Examples: good and bad documentation
+## Examples of documentation
 
-+ Think of projects with good documentation. What do you like about them?
-+ Think of projects with less good documentation. What don't you like about them? Are you missing anything?
++ Think of projects with good documentation.
+      What do you like about them?
++ Think of projects with less good documentation.
+      What don't you like about them? Are you missing anything?
 
 <quotation>NB: You can choose a mature library with lots of users, but try to also think of less mature projects you had to collaborate on, or papers you had to reproduce.</quotation>
 
@@ -44,23 +46,19 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
-## What did we learn?
+## Note:
 
-+ It is important to document code.
 + Documentation needs to meet different criteria, depending on the purpose and state of the project.
-+ For example, a well thought out README file and useful in-code commenting may suffice on a research project.
-+ Documentation should be tracked with corresponding code.
++ Documentation is a vital part of a project.
 
 ===
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
-## In-code documentation
+## Why do we comment code?
 
-+ What can I do to make my code more easily understandable?
-+ What information should go into comments?
-+ What information should go into docstrings?
-
++ to make it more readable
++
 ---
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
