@@ -1,7 +1,7 @@
 <!--
 title: Documentation
-description: Day 3 Code Refinery TUSAIL
-author: Luisa Orozco
+description: Day 3 Code Refinery
+author: Luisa Orozco, Barbara Vreede
 version: 4.3.1
 plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, RevealMenu, RevealNotes, RevealSearch, RevealZoom
 -->
@@ -18,17 +18,14 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 
 ---
 
-
----
-
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 ## Examples of documentation
 
 + Think of projects with good documentation.
-      What do you like about them?
+      _What do you like about them?_
 + Think of projects with less good documentation.
-      What don't you like about them? Are you missing anything?
+      _What don't you like about them? Are you missing anything?_
 
 <quotation>NB: You can choose a mature library with lots of users, but try to also think of less mature projects you had to collaborate on, or papers you had to reproduce.</quotation>
 
@@ -39,11 +36,13 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 ## Types of documentation
 
 <div class="fragment">
+
 + README files
 + In-code documentation
 + API documentation
 + Tutorials
 + ...
+
 </div>
 
 ---
@@ -53,7 +52,7 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 ## A good README file
 
 + README file is first thing a user/collaborator sees
-+ What should be included as a bare minimum in README files?
++ What should be included in README files?
 <ul>
   <li contenteditable="true">...</li>
   <li contenteditable="true">...</li>
@@ -79,55 +78,31 @@ Note:
 
 ---
 
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
+
+## Why write in-code documentation?
+
+In-code documentation:
+
++ Makes code more understandable
++ Explains decisions we made
+
 ---
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
-## Code documentation lesson
+## When **not** to use in-code documentation?
 
-+ Why document software?
-+ What makes good documentation:
-  + In-code documentation
-  + README files
-+ API documentation with Sphinx
-+ Deploying documentation to GitHub Pages
-
-===
-
-<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
-
-## Examples of documentation
-
-+ Think of projects with good documentation.
-      What do you like about them?
-+ Think of projects with less good documentation.
-      What don't you like about them? Are you missing anything?
-
-<quotation>NB: You can choose a mature library with lots of users, but try to also think of less mature projects you had to collaborate on, or papers you had to reproduce.</quotation>
++ When the code is self-explanatory
++ To replace good variable/function names
++ To replace version control
++ To keep old (zombie) code around
 
 ---
 
-===
-
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
-## Why do we comment code?
-
-<ul>
-  <li contenteditable="true">...</li>
-  <li contenteditable="true">...</li>
-  <li contenteditable="true">...</li>
-  <li contenteditable="true">...</li>
-
-</ul>
----
-
-<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
-
-## Is commenting necessary for understandable code?
-
-+ It can be...
-+ ... but it should never replace readable code:
+## Readable code vs commented code
 
 ```python=
 # convert from degrees celsius to fahrenheit
@@ -144,9 +119,7 @@ def celsius_to_fahrenheit(degrees):
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
-## Commenting: why vs what
-
-Let's take a look at two example comments:
+## What makes a good comment?
 
 **Comment A**
 
@@ -165,30 +138,6 @@ if temperature > -50:
 </code></pre>
 
 How are these different? Which one do you prefer?
-
----
-
-<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
-
-Do not use comments for:
-
-+ Keeping zombie 🧟 code
-<pre data-id="code-animation"><code style="overflow: hidden;" data-trim class="python">
-# Do not run this code!:
-# if temperature > 0:
-#     print('It is warm')
-</code></pre>
-
-<div class="fragment">
-<ul>
-  <li>Replacing git</li>
-</ul>
-<pre style="width: max-content;" data-id="code-animation"><code style="overflow: hidden;" data-trim class="python">
-# removed on August 5
-# if() ...
-# Now it connects to the API with o-auth2, updated 05/05/2016
-</code></pre>
-</div>
 
 ---
 
@@ -215,45 +164,11 @@ They follow a standardized syntax.
 
 ## In-code commenting: key points
 
-+ Giving explicit, descriptive names to your code segments already provides important documentation.
++ Explicit, descriptive naming already provides important documentation.
 + Comments should describe the why for your code, not the what.
 + Writing docstrings is an easy way to write documentation while you code, as they are accessible outside the code itself.
 
-===
-
-<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
-
-## Writing a good README file
-
-+ README file is first thing a user/collaborator sees
-+ What should be included as a bare minimum in README files?
-
 ---
-
-<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
-
-## What makes up a good README file?
-
-+ A descriptive project title
-+ Motivation (why the project exists) and basics
-+ Installation / How to setup
-+ Copy-pasteable quick start code example
-+ Usage reference (if not elsewhere)
-+ Recommended citation if someone uses it
-+ Other related tools ("see also")
-
----
-
-<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
-
-## User experience
-
-Think about the user (which can be a future you) of your project.
-
-+ What does this user need to know to use or contribute to the project?
-+ How do you make your project attractive to use or contribute to?
-
-===
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
@@ -275,26 +190,17 @@ Think about the user (which can be a future you) of your project.
   - set up inside your GitHub repository
   - automatically deploys your Sphinx-generated documentation
 
-===
+---
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
 
 ## Take-home message
 
-+ It is important to document code.
++ Depending on the purpose and state of the project documentation needs to meet different criteria.
 + Documentation can take different shapes:
   + Readable code
   + In-code comments
   + Docstrings
   + README files
   + Tutorials/notebooks
-+ Depending on the purpose and state of the project documentation needs to meet different criteria.
-
-
-
-<!-- .slide: data-state="standard" data-background="./files/whitebg.png"  -->
-
-## Take-away
-
-+ Documentation needs to meet different criteria, depending on the purpose and state of the project.
 + Documentation is a vital part of a project, and should be kept and created alongside the corresponding code.
