@@ -11,12 +11,6 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 
 # Testing
 
-===
-
-<!-- .slide: data-state="standard 4" data-background="./files/whitebg.png" -->
-
-# Background
-
 ---
 
 <!-- .slide: data-state="standard" data-background="./files/whitebg.png" -->
@@ -27,7 +21,7 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
   <li>Preserve functionality
   <ul>
     <li>Detect new errors early</li>
-    <li>Facilitate reproducability for research software</li>
+    <li>Facilitate reproducibility for research software</li>
   </ul></li>
   <li class="fragment">Help users
   <ul>
@@ -69,6 +63,9 @@ plugins: RevealMarkdown, RevealChalkboard, RevealHighlight, RevealMath.KaTeX, Re
 
 ---
 
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png" -->
+
+
 ## How much testing is enough?
 
 Test metrics:
@@ -79,7 +76,7 @@ Test metrics:
 
 ---
 
-<!-- .slide: data-state="blue_overlay 6 logo yellow_flag" data-background="./files/whitebg.png" data-background-size="50%" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png" -->
 
 # PyTest
 
@@ -87,9 +84,10 @@ Test metrics:
 - [docs.pytest.org](https://docs.pytest.org/en/7.3.x/)
 
 ![](.files/pytest_logo.svg)
+
 ---
 
-<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/whitebg.png" data-background-size="50%" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png" -->
 
 ## Write Code
 
@@ -127,7 +125,7 @@ AssertionError
 
 ---
 
-<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/whitebg.png" data-background-size="50%" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png" -->
 
 ## Test!
 
@@ -145,7 +143,7 @@ example.py .                                                  [100%]
 
 ---
 
-<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/whitebg.png" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png" -->
 
 ## Breaking Things
 
@@ -161,7 +159,7 @@ def test_add():
 
 ---
 
-<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/whitebg.png" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png" -->
 
 ## Testing Again
 
@@ -195,7 +193,7 @@ FAILED example.py::test_add - assert -1 == 5
 
 ---
 
-<!-- .slide: data-state="blue_overlay logo yellow_flag" data-background="./files/whitebg.png" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png" -->
 
 ## Take-away
 
@@ -217,18 +215,11 @@ def test_paint_cows():
 </code></pre>
 
 
-===
-
-<!-- .slide: data-state="black_overlay 5 yellow_flag logo" data-background="./files/water-1761027_1280.jpg" -->
-<!-- Image by <a href="https://pixabay.com/users/qimono-1962238/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1761027">Arek Socha</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1761027">Pixabay</a> -->
-
-# Recap: Purity
-
-
 ---
 
-<!-- .slide: data-state="black_overlay yellow_flag logo" data-background="./files/water-1761027_1280.jpg" -->
-## Pure Functions
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png" -->
+
+# Recap: pure functions
 
 <div style="width: 59%; float: left;">
 <ul style="margin-top: 1ex;">
@@ -262,7 +253,8 @@ print(3)
 
 ---
 
-<!-- .slide: data-state="black_overlay yellow_flag logo" data-background="./files/water-1761027_1280.jpg" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png" -->
+
 ## Impure Functions
 
 <div style="width: 46%; float: left;">
@@ -308,138 +300,10 @@ print(nums)            # [1, 2, 3] 😬</span>
   <li>Some side effects are hard to spot</li>
 </ul>
 
-===
-
-<!-- .slide: data-state="white_overlay 4 logo yellow_flag" data-background="./files/box-write-in-it-5279529_1280.jpg" -->
-<!-- Image by <a href="https://pixabay.com/users/hollanddesign-15443332/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5279529">Simone Holland</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5279529">Pixabay</a> -->
-
-# Test Design
 
 ---
 
-<!-- .slide: data-state="white_overlay logo yellow_flag" data-background="./files/box-write-in-it-5279529_1280.jpg" -->
-
-
-## Test for Weird Things
-
-<div style="font-size: smaller;">
-<pre style="width: 50%;" data-id="code-animation"><code class="python" style="overflow: hidden;" data-trim data-noescape class="bash" data-line-numbers=>
-def test_func():
-    # Test for raised NameError
-    with pytest.raises(NameError) as err:
-        func(abcde)
-    # Test for error message
-    assert "oopsie daisy 🌼" in str(err.value)
-</code></pre>
-
-<pre class="fragment" style="width: 50%;" data-id="code-animation"><code class="python" style="overflow: hidden;" data-trim data-noescape class="bash" data-line-numbers=>
-def test_func():
-    # Test with files
-    _, tmp_file = tempfile.mkstemp()
-    with open(tmp_file, 'w') as f:
-        f.write("text")
-    assert func(tmp_file) == "text"
-    os.remove(tmp_file)
-</code></pre>
-
-<pre class="fragment" style="width: 50%;" data-id="code-animation"><code class="python" style="overflow: hidden;" data-trim data-noescape class="bash" data-line-numbers=>
-def func():
-    # my_module.py: var = 5
-    from my_module import var
-    return var + 2
-&nbsp;
-def test_func(monkeypatch):  # ⬅️🐵⚠️
-    # Test with dependencies
-    monkeypatch.setattr(ext, "var", 5)
-    assert func() == 7
-</code></pre>
-</div>
-
----
-
-<!-- .slide: data-state="white_overlay logo yellow_flag" data-background="./files/box-write-in-it-5279529_1280.jpg" -->
-
-## Exercise
-<div style="font-size: xx-large; width: 49%; float: left;">
-
-<ul>
-  <li>Is the function pure?</li>
-  <li>How would you test?</li>
-  <li>Is testing easy or hard? Why?</li>
-  <li>Focus on the idea, it's OK not to write code</li>
-</ul>
-
-<pre style="width: 100%;" data-id="code-animation"><code class="python" style="overflow: hidden;" data-trim data-noescape class="bash" data-line-numbers=>
-# DESIGN 1️⃣
-def factorial(n):
-    """Computes the factorial of n.
-    """
-    if n < 0:
-        raise ValueError('received negative input')
-    result = 1
-    for i in range(1, n + 1):
-        result *= i
-    return result
-</code></pre>
-
-<pre style="width: 100%;" data-id="code-animation"><code class="python" style="overflow: hidden;" data-trim data-noescape class="bash" data-line-numbers=>
-# DESIGN 2️⃣
-def count_word_occurrence_in_string(text, word):
-    """Counts how often word appears in text.
-    Example: if text is "one two one two three four"
-             and word is "one", then this function
-             returns 2
-    """
-    words = text.split()
-    return words.count(word)
-</code></pre>
-
-</div>
-
-<div style="font-size: xx-large; width: 49%; float: right;">
-<pre style="width: 100%;" data-id="code-animation"><code class="python" style="overflow: hidden;" data-trim data-noescape class="bash" data-line-numbers=>
-# DESIGN 3️⃣
-def count_word_occurrence_in_file(file_name, word):
-    """Counts how often word appears in file file_name.
-    Example: if file contains "one two one three" and
-             word is "one", then return 2
-    """
-    count = 0
-    with open(file_name, 'r') as f:
-        for line in f:
-            words = line.split()
-            count += words.count(word)
-    return count
-</code></pre>
-
-<pre style="width: 100%;" data-id="code-animation"><code class="python" style="overflow: hidden;" data-trim data-noescape class="bash" data-line-numbers=>
-# DESIGN 4️⃣
-def check_reactor_temperature(temperature_celsius):
-    """Checks whether temperature is above
-    max_temperature and returns a status.
-    """
-    from reactor import max_temperature
-    if temperature_celsius > max_temperature:
-        status = 1
-    else:
-        status = 0
-    return status
-</code></pre>
-
-<pre style="width: 100%;" data-id="code-animation"><code class="python" style="overflow: hidden;" data-trim data-noescape class="bash" data-line-numbers=>
-# DESIGN 5️⃣
-class Pet:
-    def __init__(self, name):
-        self.name = name
-        self.hunger = 0
-    def go_for_a_walk(self):  # ⬅️ test this function
-        self.hunger += 1
-</code></pre>
-</div>
-
----
-
-<!-- .slide: data-state="white_overlay 9 logo yellow_flag" data-background="./files/box-write-in-it-5279529_1280.jpg" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png" -->
 
 ## Take-away
 
@@ -451,19 +315,11 @@ class Pet:
 - Testing removes the dread of refactoring 🔁
 - Your future you will thank you 🙏
 
-===
-
-<!-- .slide: data-state="purple_overlay 4 logo yellow_flag" data-background="./files/car-5500794_1280.jpg" -->
-
-# Test-Driven Development
-
-<div style="height: 20vh;"></div>
-
 ---
 
-<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/car-5500794_1280.jpg" data-auto-animate -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png" -->
 
-## FizzBuzz Function
+## Test-Driven Development: FizzBuzz Function
 
 <div class="r-stack">
   <img src="./files/fizz_buzz_1.svg">
@@ -486,7 +342,7 @@ class Pet:
 
 ---
 
-<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/car-5500794_1280.jpg" data-auto-animate -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png" -->
 
 ## FizzBuzz Function
 
@@ -506,7 +362,7 @@ class Pet:
 
 ---
 
-<!-- .slide: data-state="purple_overlay logo yellow_flag" data-background="./files/car-5500794_1280.jpg" -->
+<!-- .slide: data-state="standard" data-background="./files/whitebg.png" -->
 
 ## Take-away
 
